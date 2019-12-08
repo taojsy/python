@@ -1,0 +1,683 @@
+Copyright (c) 2015 Brendan Scott
+
+Permission is granted, free of charge, to any person obtaining a copy
+of this software (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+######################################################### 
+## Page numbers correspond to the first edition of Python for Kids for Dummies
+## ISBN 9781119093107
+## If you are copying and pasting, 
+## don't copy the >>>, the ... or the first space immediately 
+## after either of them. 
+## output is shown for some commands as well (it's not code
+## so don't try copying it, but compare your output to what's here)
+#########################################################
+
+
+
+######## Page 178  
+>>> import string
+>>> string.printable
+'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r\x0b\x0c'
+
+>>> print("1\t2")
+1         2
+>>> print("1\n2")
+1
+2
+
+######## Page 179-180
+ 
+>>> test_string = '0123456789'
+>>> test_string[0:1]
+'0'
+>>> test_string[1:3]
+'12'
+>>> # range(10) is a list of the numbers from 0 to 9 inclusive
+>>> range(10)[0:1]
+[0]
+>>> range(10)[1:3]
+[1, 2]
+>>> test_string[:3]
+'012'
+>>> test_string[3:]
+'3456789'
+
+######## Page 180
+                            
+>>> # everything up to, but not including, the last character
+>>> test_string[:-1]
+'012345678'
+>>> test_string[-1:] # everything *from* the last character
+'9'
+                             
+                             
+>>> char_set = string.printable[:-5]
+>>> char_set
+'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ '
+     
+     
+######## Page 181
+                            
+                            
+>>> substitution_chars = char_set[-3:]+char_set[:-3]
+>>> substitution_chars
+'}~ 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|'
+
+
+######## Page 182               
+
+>>> print(char_set[:62]+'\n'+substitution_chars[:62])
+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+}~ 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW
+
+                                   
+
+######## Page 183-184
+
+"""Cryptopy
+Take a plaintext message and encrypt it using a Caesar cipher
+Brendan Scott, 2015
+"""
+
+#### Imports Section
+import string
+
+#### Constants Section
+CHAR_SET = string.printable[:-5]
+SUBSTITUTION_CHARS = CHAR_SET[-3:]+CHAR_SET[:-3]
+
+TEST_MESSAGE = "I like Monty Python.  They are very funny."
+
+
+#### Function Section
+def encrypt_msg(plaintext):
+    """Take a plaintext message and encrypt each character using
+    a Caesar cipher (d->a). Return the cipher text"""
+    return plaintext # no encrypting atm
+    
+    
+#### Testing Section
+ciphertext = encrypt_msg(TEST_MESSAGE)
+print(TEST_MESSAGE) # for comparison while testing
+print(ciphertext)
+                            
+                            
+>>> my_dictionary={'d':'a'}
+>>> my_dictionary['d']
+'a'
+
+
+######## Page 185
+                             
+                             
+>>> # an empty dictionary
+>>> my_empty_dictionary = {}
+>>> # earlier example, dictionary with one item
+>>> my_dictionary={'d':'a'}
+>>> # dictionary with two items separated by a comma
+>>> my_dictionary={'d':'a', 'e':'b'}
+
+
+######## Page 186
+
+
+>>> my_dictionary['f']
+
+Traceback (most recent call last):
+  File "<pyshell#45>", line 1, in <module>
+    my_dictionary['f']
+KeyError: 'f'
+                             
+                             
+>>> k = 'f'
+>>> v = 'c'
+>>> my_dictionary[k]=v # create a new item in the existing dictionary
+>>> my_dictionary
+{'e': 'b', 'd': 'a', 'f': 'c'}
+               
+               
+######## Page 187
+
+                 
+>>> [x for x in enumerate("Hello")]
+[(0, 'H'), (1, 'e'), (2, 'l'), (3, 'l'), (4, 'o')]
+
+
+>>> for i,c in enumerate("Hello"):
+        print(i,c)
+        
+(0, 'H')
+(1, 'e')
+(2, 'l')
+(3, 'l')
+(4, 'o')
+                            
+                            
+######## Page 188 
+                             
+                             
+# generate encryption dictionary from the character set and
+# its substitutions
+ENCRYPTION_DICT= {} # should be all caps in text, not lower case.
+for i,k in enumerate(CHAR_SET):
+      v = SUBSTITUTION_CHARS[i]
+      ENCRYPTION_DICT[k]=v
+
+
+>>> a_string = ""
+>>> a_string
+''
+>>> for i in range(10):
+          a_string = a_string + str(i) # add '0' then '1' and so on
+          
+>>> a_string
+'0123456789'
+
+######## Page 189
+                           
+                           
+>>> accumulator = []
+>>> for i in range(10):
+        accumulator.append(str(i))
+>>> accumulator
+['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+>>> ''.join(accumulator)
+'0123456789'
+                            
+                            
+>>> ' spam, '.join(accumulator)
+'0 spam, 1 spam, 2 spam, 3 spam, 4 spam, 5 spam, 6 spam, 7 spam,
+8 spam, 9'
+
+                                 
+######## Page 191
+                            
+                            
+#### Function Section
+def encrypt_msg(plaintext, encrypt_dict):
+    """Take a plaintext message and encrypt each character using
+    the encryption dictionary provided. key translates to its
+    associated value.
+    Return the cipher text"""
+    ciphertext = []
+    for k in plaintext:
+        v = encrypt_dict[k]
+        ciphertext.append(v)
+        # you could just say
+        # ciphertext.append(encrypt_dict[k])
+        # I split it out so you could follow it better.
+    return ''.join(ciphertext)
+
+
+ciphertext = encrypt_msg(CHAR_SET, ENCRYPTION_DICT)
+                           
+                           
+######## Page 192-193
+
+def decrypt_msg(ciphertext, decrypt_dict):
+    """Take a ciphertext message and decrypt each character using
+    the decryption dictionary provided. key translates to its
+    associated value.
+    Return the plaintext"""
+    plaintext = []
+    for k in ciphertext:
+        v = decrypt_dict[k]
+        plaintext.append(v)
+    return ''.join(plaintext)
+
+                                     
+# generate encryption dictionary from the character set and
+# its substitutions
+ENCRYPTION_DICT = {}
+DECRYPTION_DICT = {}
+for i,k in enumerate(CHAR_SET):
+    v = SUBSTITUTION_CHARS[i]
+    ENCRYPTION_DICT[k]=v
+    DECRYPTION_DICT[v]=k
+
+    
+######## Page 194 
+
+#### Testing Section
+##ciphertext = encrypt_msg(CHAR_SET, ENCRYPTION_DICT)
+##print(CHAR_SET) # for comparison while testing
+##print(ciphertext)
+##print(SUBSTITUTION_CHARS) #what you should get
+##print(ciphertext == SUBSTITUTION_CHARS) # are they the same?
+##
+##plaintext = decrypt_msg(ciphertext, DECRYPTION_DICT)
+##print(plaintext)
+##print(plaintext == CHAR_SET)
+
+test_message = CHAR_SET
+ciphertext = encrypt_msg(test_message, ENCRYPTION_DICT)
+plaintext = decrypt_msg(ciphertext, DECRYPTION_DICT)
+
+print(test_message)
+print(ciphertext)
+print(plaintext)
+print(plaintext == test_message)
+                             
+                             
+                             
+>>> ================================ RESTART ================================
+>>>
+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+}~ 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|
+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+True
+
+
+TEST_MESSAGE = "I like Monty Python.  They are very funny."
+test_message = TEST_MESSAGE
+
+
+######## Page 196   
+>>> ================================== RESTART================================
+>>>
+I like Monty Python. They are very funny.
+F|ifhb|Jlkqv|Mvqelk+||Qebv|7ob|sbov|crkkv+
+I like Monty Python. They are very funny.
+True
+
+                                  
+"""Cryptopy
+Take a plaintext message and encrypt it using a Caesar cipher
+Brendan Scott, 2015
+"""
+
+#### Imports Section
+import string
+
+#### Constants Section
+CHAR_SET = string.printable[:-5]
+SUBSTITUTION_CHARS = CHAR_SET[-3:]+CHAR_SET[:-3]
+# generate encryption dictionary from the character set and
+# its substitutions
+ENCRYPTION_DICT = {}
+DECRYPTION_DICT = {}
+for i,k in enumerate(CHAR_SET):
+      v = SUBSTITUTION_CHARS[i]
+      ENCRYPTION_DICT[k]=v
+      DECRYPTION_DICT[v]=k
+      
+      
+TEST_MESSAGE = "I like Monty Python.   They are very funny."
+
+#### Function Section
+def encrypt_msg(plaintext, encrypt_dict):
+    """Take a plaintext message and encrypt each character using
+    the encryption dictionary provided. key translates to its
+    associated value.
+    Return the cipher text"""
+    ciphertext = []
+    for k in plaintext:
+        v = encrypt_dict[k]
+        ciphertext.append(v)
+        # you could just say
+        # ciphertext.append(encrypt_dict[k])
+        # I split it out so you could follow it better.
+    return ''.join(ciphertext)
+    
+    
+def decrypt_msg(ciphertext, decrypt_dict):
+    """Take a ciphertext message and decrypt each character using
+    the decryption dictionary provided. key translates to its
+    associated value.
+    Return the plaintext"""
+    plaintext = []
+    for k in ciphertext:
+        v = decrypt_dict[k]
+        plaintext.append(v)
+    return ''.join(plaintext)
+  
+  
+#### Testing Section
+test_message = TEST_MESSAGE
+ciphertext = encrypt_msg(test_message, ENCRYPTION_DICT)
+plaintext = decrypt_msg(ciphertext, DECRYPTION_DICT)
+
+print(test_message)
+print(ciphertext)
+print(plaintext)
+print(plaintext == test_message)
+
+                                
+
+######## Page 199
+
+#### Input and Output Section
+message = raw_input("Type the message to process below:\n")
+ciphertext = encrypt_msg(message, ENCRYPTION_DICT)
+plaintext = decrypt_msg(message, DECRYPTION_DICT)
+print("This message encrypts to")
+print(ciphertext)
+print # just a blank line for readability
+print("This message decrypts to")
+print(plaintext)
+
+
+>>> ================================== RESTART ================================
+>>>
+Type the message you'd like to encrypt below:
+I love learning Python. And my teacher is smelly. And I shouldn't start a sentence with and.
+This message encrypts to
+F|ilsb|ib7okfkd|Mvqelk+|xka|jv|qb79ebo|fp|pjbiiv+||xka|F|pelriak$q|pq7oq|7|pbkqbk9b|tfqe|7ka+
+This message decrypts to
+L2oryh2ohduqlqj2SBwkrq;2Dqg2pB2whdfkhu2lv2vphooB;22Dqg2L2vkrxogq*w2vwduw2d2vhqwhqfh2zlwk2dqg;
+
+                             
+>>> ================================== RESTART ================================
+>>>
+Type the message you'd like to encrypt below:
+F|ilsb|ib7okfkd|Mvqelk+|xka|jv|qb79ebo|fp|pjbiiv+||xka|F|pelriak$q|pq7oq|7|pbkqbk9b|tfqe|7ka+
+This message encrypts to
+C_fip8_f84lhcha_Jsnbih(_uh7_gs_n846b8l_cm_mg8ffs(__uh7_C_mbiof7h!n_mn4ln_4_m8hn8h68_qcnb_4h7(
+This message decrypts to
+I love learning Python. And my teacher is smelly.  And I shouldn't start a sentence with and.
+
+                              
+######## Page 200    
+
+>>> file_object = open('p4k_test.py','w')
+
+######## Page 201
+
+>>> text = "print('Hello from within the file')\n" # watch the " and '
+>>> file_object.write(text) # writes it to the file
+>>> file_object.write(text) # writes it to the file again!
+>>> file_object.close() # finished with file, so close it
+
+######## Page 202 
+
+>>> file_object = open('p4k_test.py','r')
+
+>>> print(file_object.read()) # next two lines are print out!
+print('Hello from within the file')
+print('Hello from within the file')
+
+
+>>> print(file_object.read())
+                            
+                            
+>>> file_object.close()
+>>> file_object = open('p4k_test.py','r')
+>>> print(file_object.read())
+print('Hello from within the file')
+print('Hello from within the file')
+
+>>> file_object.close()  # finished, so close the file.
+                              
+                              
+######## Page 203
+                             
+>>> file_object.close()
+>>> file_object = open('p4k_test.py','r')
+>>> counter = 0
+>>> for line in file_object.readlines():
+          counter = counter +1
+          print(str(counter)+ ": "+line)
+          
+1: print('Hello from within the file')
+
+2: print('Hello from within the file')
+
+>>> file_object.close()
+
+>>> line
+"print('Hello from within the file')\n"
+                         
+                         
+>>> ================================== RESTART ================================
+>>>
+Hello from within the file
+Hello from within the file
+                         
+######## Page 204 
+                              
+>>> with open('p4k_test.py','r') as file_object:
+        print(file_object.read())
+        
+        
+print('Hello from within the file')
+print('Hello from within the file')
+
+>>> file_object
+<closed file 'p4k_test.py', mode 'r' at 0xf7fed0>
+       
+       
+######## Page 205
+
+>>> with open('testfile2','w') as a:
+        a.write('stuff')
+        
+>>> with open('testfile2','r') as a,
+         open('p4k_test.py','r') as b:
+        print(a.read())
+        print(b.read())
+        
+stuff
+print('Hello from within the file')
+print('Hello from within the file')
+
+>>> a
+<closed file 'testfile2', mode 'r' at 0xf6e540>
+>>> b
+<closed file 'p4k_test.py', mode 'r' at 0xef4ed0>
+
+                                  
+                                  
+######## Page 207
+
+>>> INPUT_FILE_NAME = "cryptopy_input.txt"
+>>> with open(INPUT_FILE_NAME,'w') as input_file:
+        input_file.write('This is some test text')
+
+INPUT_FILE_NAME = "cryptopy_input.txt"
+OUTPUT_FILE_NAME = "cryptopy_output.txt"
+        
+        
+######## Page 208
+
+
+#### Input and Output Section
+with open(INPUT_FILE_NAME,'r') as input_file:
+    message = input_file.read()
+    
+ciphertext = encrypt_msg(message, ENCRYPTION_DICT)
+print(ciphertext) # just for testing
+
+with open(OUTPUT_FILE_NAME,'w') as output_file:
+    output_file.write(ciphertext)
+
+    
+Qefp|fp|pljb|qbpq|qbuq
+
+>>> OUTPUT_FILE_NAME = "cryptopy_output.txt"
+>>> with open(OUTPUT_FILE_NAME,'r') as output_file:
+        print(output_file.read())
+        
+        
+Qefp|fp|pljb|qbpq|qbuq
+
+
+######## Page 209
+
+>>> import cryptopy
+Qefp|fp|pljb|qbpq|qbuq
+
+>>> plaintext = """I wonder if I can use the functions and constants from cryptopy to make encrypted messages from the command line?"""
+
+>>> ciphertext = cryptopy.encrypt_msg(plaintext,cryptopy.ENCRYPTION_DICT)
+            
+>>> ciphertext
+'F|tlkabo|fc|F|97k|rpb|qeb|crk9qflkp|7ka|9lkpq7kqp|colj|9ovmqlmv\nql|j7hb|bk9ovmqba|jbpp7dbp|colj|qeb|9ljj7ka|ifkb<'
+
+
+######## Page 210
+
+
+>>> print(cryptopy.decrypt_msg(ciphertext,cryptopy.DECRYPTION_DICT))
+I wonder if I can use the functions and constants from cryptopy
+to make encrypted messages from the command line?
+
+                                  
+>>> ciphertext = "Qefp|fp|pljb|qbpq|qbuq"
+>>> cryptopy.decrypt_msg(ciphertext,cryptopy.DECRYPTION_DICT)
+'This is some test text'
+
+######## Page 211
+
+                 
+>>> if __name__ == "__main__":
+        print("Not in an import")
+        
+        
+Not in an import
+
+
+
+if __name__ == "__main__":
+##    message = raw_input("Type the message to process below:\n")
+##    ciphertext = encrypt_msg(message, ENCRYPTION_DICT)
+##    plaintext = decrypt_msg(message, DECRYPTION_DICT)
+##    print("This message encrypts to")
+##    print(ciphertext)
+##    print # just a blank line for readability
+##    print("This message decrypts to")
+##    print(plaintext)
+
+    with open(INPUT_FILE_NAME,'r') as input_file:
+        message = input_file.read()
+        
+    ciphertext = encrypt_msg(message, ENCRYPTION_DICT)
+    print(ciphertext) # just for testing
+    
+    with open(OUTPUT_FILE_NAME,'w') as output_file:
+        output_file.write(ciphertext)
+
+
+>>> import cryptopy # nothing should print
+>>>
+        
+        
+######## Page 213
+                          
+#### Main Section
+if __name__ == "__main__":
+    ENCRYPT = False # This is the constant used for the if clause
+    
+    with open(INPUT_FILE_NAME,'r') as input_file:
+        message = input_file.read()
+
+    if ENCRYPT:
+        text_to_output = encrypt_msg(message, ENCRYPTION_DICT)
+    else:
+        text_to_output = decrypt_msg(message, DECRYPTION_DICT)
+        
+    print(text_to_output) # just for testing
+    
+    with open(OUTPUT_FILE_NAME,'w') as output_file:
+        output_file.write(text_to_output)
+
+######## Page 215
+                 
+"""Cryptopy
+Take a plaintext message and encrypt it using a Caesar cipher
+Take a ciphertext message and decrypt it using the same cipher
+Encrypt/decrypt from and to a file
+Brendan Scott, 2015
+"""
+
+
+#### Imports Section
+import string
+
+#### Constants Section
+CHAR_SET = string.printable[:-5]
+SUBSTITUTION_CHARS = CHAR_SET[-3:]+CHAR_SET[:-3]
+# generate encryption dictionary from the character set and
+# its substitutions
+ENCRYPTION_DICT = {}
+DECRYPTION_DICT = {}
+for i,k in enumerate(CHAR_SET):
+    v = SUBSTITUTION_CHARS[i]
+    ENCRYPTION_DICT[k]=v
+    DECRYPTION_DICT[v]=k
+# other characters - \t, \n etc - are not changed
+for c in string.printable[-5:]: # watch the colons!
+    ENCRYPTION_DICT[c]=c
+    DECRYPTION_DICT[c]=c
+    
+TEST_MESSAGE = "I like Monty Python. They are very funny."
+INPUT_FILE_NAME = "cryptopy_input.txt"
+OUTPUT_FILE_NAME = "cryptopy_output.txt"
+
+#### Function Section
+def encrypt_msg(plaintext, encrypt_dict):
+    """Take a plaintext message and encrypt each character using
+    the encryption dictionary provided. key translates to its
+    associated value.
+    Return the cipher text"""
+    ciphertext = []
+    for k in plaintext:
+        v = encrypt_dict[k]
+        ciphertext.append(v)
+        # you could just say
+        # ciphertext.append(encrypt_dict[k])
+        # I split it out so you could follow it better.
+    return ''.join(ciphertext)
+  
+def decrypt_msg(ciphertext, decrypt_dict):
+    """Take a ciphertext message and decrypt each character using
+    the decryption dictionary provided. key translates to its
+    associated value.
+    Return the plaintext"""
+    plaintext = []
+    for k in ciphertext:
+        v = decrypt_dict[k]
+        plaintext.append(v)
+    return ''.join(plaintext)
+    
+#### Main Section
+if __name__ == "__main__":
+##    message = raw_input("Type the message to process below:\n")
+##    ciphertext = encrypt_msg(message, ENCRYPTION_DICT)
+##    plaintext = decrypt_msg(message, DECRYPTION_DICT)
+##    print("This message encrypts to")
+##    print(ciphertext)
+##    print # just a blank line for readability
+##    print("This message decrypts to")
+##    print(plaintext)
+
+    ENCRYPT = False # This is the constant used for the if clause
+    
+    with open(INPUT_FILE_NAME,'r') as input_file:
+        message = input_file.read()
+        
+    if ENCRYPT:
+        text_to_output = encrypt_msg(message, ENCRYPTION_DICT)
+    else:
+        text_to_output = decrypt_msg(message, DECRYPTION_DICT)
+        
+    print(text_to_output) # just for testing
+    
+    with open(OUTPUT_FILE_NAME,'w') as output_file:
+        output_file.write(text_to_output)
