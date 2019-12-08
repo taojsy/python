@@ -1,0 +1,817 @@
+Copyright (c) 2015 Brendan Scott
+
+Permission is granted, free of charge, to any person obtaining a copy
+of this software (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+######################################################### 
+## Page numbers correspond to the first edition of Python for Kids for Dummies
+## ISBN 9781119093107
+## If you are copying and pasting, 
+## don't copy the >>>, the ... or the first space immediately 
+## after either of them. 
+## output is shown for some commands as well (it's not code
+## so don't try copying it, but compare your output to what's here)
+#########################################################
+
+
+
+
+######## Page 240
+
+>>> class AddressEntry(object):
+        """
+        AddressEntry instances hold and manage details of a person
+        """
+        pass
+>>> AddressEntry # without parentheses
+<class '__main__.AddressEntry'>
+>>>
+                            
+                            
+>>> AddressEntry() # parentheses create an instance
+<__main__.AddressEntry object at 0x7f9309751590>
+
+
+>>> address_entry = AddressEntry()
+                             
+                             
+######## Page 241
+                           
+                           
+AddressEntry: <class '__main__.AddressEntry'>
+address_entry: <__main__.AddressEntry object at 0x7f9309751590>
+
+
+>>> AddressEntry.class_attribute = "This is a class attribute"
+>>> address_entry.instance_attribute = "This is an instance attribute"
+>>> AddressEntry.class_attribute
+'This is a class attribute'
+>>> address_entry.instance_attribute
+'This is an instance attribute'
+                             
+                             
+>>> address_entry.class_attribute
+'This is a class attribute'
+
+
+
+######## Page 242   
+                             
+                             
+>>> address_entry2 = AddressEntry()
+>>> address_entry2.class_attribute = "An overridden class attribute"
+>>> address_entry2.class_attribute
+'An overridden class attribute'
+>>> AddressEntry.class_attribute
+'This is a class attribute'
+                               
+                   
+                              
+######## Page 244 
+                             
+                             
+"""
+Addressbook.py
+An address book program to store details of people I know.
+Stuff I'm storing is:
+first name
+family name
+email address
+date of birth
+[other stuff]
+Brendan Scott
+Feb 2015
+"""
+##### Classes Section
+class AddressBook(object):
+    """
+    AddressBook instances hold and manage a list of people
+    """
+    pass
+    
+    
+class AddressEntry(object):
+    """
+    AddressEntry instances hold and manage details of a person
+    """
+    
+    
+##### Main Section
+if __name__ == "__main__":
+    address_book = AddressBook()
+    person1 = AddressEntry()
+                              
+                              
+######## Page 245
+
+                 
+>>>  person1 = AddressEntry()# creates the entry
+>>>  person1.first_name = "Eric" # sets the first name etc.
+>>>  person1.family_name = "Idle"
+>>>  person1.date_of_birth = "March 29, 1943"
+>>>  person1.email_address = None
+                            
+######## Page 246
+              
+              
+class AddressEntry(object):
+    """
+    AddressEntry instances hold and manage details of a person
+    """
+    def __init__(self, first_name=None, family_name=None,
+                  email_address=None, date_of_birth=None):
+        """Initialize attributes first_name,
+        family_name and date_of_birth.
+        Each argument should be a string.
+        date_of_birth should be of the form "MM DD, YYYY"
+        """
+        self.first_name = first_name
+        self.family_name = family_name
+        self.email_address = email_address
+        self.date_of_birth = date_of_birth
+  
+  
+######## Page 248  
+                     
+                     
+##### Classes Section
+class AddressBook(object):
+    """
+    AddressBook instances hold and manage a list of people
+    """
+    pass
+    
+    
+class AddressEntry(object):
+    """
+    AddressEntry instances hold and manage details of a person
+    """
+    def __init__(self, first_name=None, family_name=None,
+                 email_address=None, date_of_birth=None):
+          """Initialize attributes first_name,
+          family_name and date_of_birth.
+          Each argument should be a string.
+          date_of_birth should be of the form "MM DD, YYYY"
+          """
+          self.first_name = first_name
+          self.family_name = family_name
+          self.email_address = email_address
+          self.date_of_birth = date_of_birth
+          
+          
+##### Main Section
+
+if __name__ == "__main__":
+    address_book = AddressBook()
+    person1 = AddressEntry("Eric", "Idle", None, "March 29, 1943")
+    print(person1)
+                     
+
+                     
+######## Page 250
+                     
+##### Functions Section
+def __repr__(self):
+    """
+    Given an AddressEntry object self return
+    a readable string representation
+    """
+    template = "AddressEntry(first_name='%s', "+\
+                "family_name='%s',"+\
+                " email_address='%s', "+\
+                "date_of_birth='%s')"
+    return template%(self.first_name, self.family_name,
+                     self.email_address, self.date_of_birth)
+                     
+##### Main Section
+
+if __name__ == "__main__":
+    address_book = AddressBook()
+    person1 = AddressEntry("Eric", "Idle", None, "March 29, 1943")
+    print(person1)
+    print(__repr__(person1))
+                     
+                     
+AddressEntry.__repr__ = __repr__
+
+
+######## Page 252-253
+
+class AddressEntry(object):
+    """
+    AddressEntry instances hold and manage details of a person
+    """
+    def __init__(self, first_name=None, family_name=None,
+                  email_address=None, date_of_birth=None):
+        """initialize attributes first_name, family_name
+            and date_of_birth
+        each argument should be a string
+        date_of_birth should be of the form "MM DD, YYYY"
+        """
+        self.first_name = first_name
+        self.family_name = family_name
+        self.email_address = email_address
+        self.date_of_birth = date_of_birth
+        
+    def __repr__(self):
+        """
+        Given an AddressEntry object self return
+        a readable string representation
+        """
+        template = "AddressEntry(first_name='%s', "+\
+                   "family_name='%s',"+\
+                   " email_address='%s', "+\
+                   "date_of_birth='%s')"
+        return template%(self.first_name, self.family_name,
+                          self.email_address, self.date_of_birth)
+                          
+##### Functions Section
+
+##### Main Section
+
+if __name__ == "__main__":
+    address_book = AddressBook()
+    person1 = AddressEntry("Eric", "Idle", None, "March 29, 1943")
+    print(person1)
+
+
+######## Page 254-256
+
+
+"""
+Addressbook.py
+An address book program to store details of people I know.
+Stuff I'm storing is:
+first name
+family name
+email address
+date of birth
+[other stuff]
+Brendan Scott
+Feb 2015
+"""
+
+
+##### Classes Section
+class AddressBook(object):
+    """
+    AddressBook instances hold and manage a list of people
+    """
+    def __init__(self):
+        """ Set people attribute to an empty list"""
+        self.people = []
+    def add_entry(self, new_entry):
+        """ Add a new entry to the list of people in the
+        address book the new_entry should be an instance
+        of the AddressEntry class"""
+        self.people.append(new_entry)
+        
+        
+class AddressEntry(object):
+    """
+    AddressEntry instances hold and manage details of a person
+    """
+    def __init__(self, first_name=None, family_name=None,
+                email_address=None, date_of_birth=None):
+        """Initialize attributes first_name,
+        family_name and date_of_birth.
+        Each argument should be a string.
+        date_of_birth should be of the form "MM DD, YYYY"
+        """
+        self.first_name = first_name
+        self.family_name = family_name
+        self.email_address = email_address
+        self.date_of_birth = date_of_birth
+    def __repr__(self):
+        """
+        Given an AddressEntry object self return
+        a readable string representation
+        """
+        template = "AddressEntry(first_name='%s', "+\
+                  "family_name='%s',"+\
+                  "email_address='%s', "+\
+                  "date_of_birth='%s')"
+        return template%(self.first_name, self.family_name,
+                         self.email_address, self.date_of_birth)
+                         
+##### Functions Section
+
+##### Main Section
+
+if __name__ == "__main__":
+    address_book = AddressBook()
+    person1 = AddressEntry("Eric", "Idle", None, "March 29, 1943")
+    print(person1)
+    address_book.add_entry(person1)
+    print(address_book.people)
+                              
+                              
+>>> import pickle
+>>> FILENAME = "p4k_test.pickle"
+>>>  dummy_list = [x*2 for x in range(10)]
+>>>  dummy_list # confirm what it looks like
+[0,  2, 4, 6, 8, 10, 12, 14, 16, 18]
+>>>  with open(FILENAME,'w') as file_object: #now dump it!
+        pickle.dump(dummy_list,file_object)
+        
+>>> # open the raw file to look at what was written
+>>> with open(FILENAME,'r') as file_object: # change w to r!!!
+        print(file_object.read())
+        
+(lp0
+I0
+aI2
+aI4
+aI6
+aI8
+aI10
+aI12
+aI14
+aI16
+aI18
+a.
+
+######## Page 258 
+
+Python 2.7.3 (default, Apr 14 2012, 08:58:41) [GCC] on linux2
+Type "copyright", "credits" or "license()" for more information.
+>>> import pickle
+>>> FILENAME = "p4k_test.pickle"
+>>> with open(FILENAME,'r') as file_object:
+          dummy_copy = pickle.load(file_object)
+          
+>>> dummy_copy
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+                 
+######## Page 260               
+
+#### Imports
+import cPickle as pickle
+
+#### Constants
+SAVE_FILE_NAME = "address_book.pickle"
+
+                          
+    def save(self):
+        with open(SAVE_FILE_NAME, 'w') as file_object:
+              pickle.dump(self, file_object)
+
+######## Page 261
+                            
+                            
+address_book.save()
+
+                                  
+######## Page 262 
+
+
+    def load(self):
+        """
+        Load a pickled address book from the standard save file
+        """
+        with open(SAVE_FILE_NAME, 'r') as file_object:
+            self.address_book = pickle.load(file_object)
+
+            
+"""
+Addressbook.py
+An address book program to store details of people I know.
+Stuff I'm storing is:
+first name
+family name
+email address
+date of birth
+[other stuff]
+
+Brendan Scott
+Feb 2015
+"""
+
+#### Imports
+import cPickle as pickle
+
+#### Constants
+SAVE_FILE_NAME = "address_book.pickle"
+
+##### Classes Section
+class AddressBook(object):
+    """
+    AddressBook instances hold and manage a list of people
+    """
+    def __init__(self):
+        """ Set people attribute to an empty list"""
+        self.people = []
+        
+    def add_entry(self, new_entry):
+        """ Add a new entry to the list of people in the
+        address book the new_entry should be an instance
+        of the AddressEntry class"""
+        self.people.append(new_entry)
+        
+    def save(self):
+        """ save a copy of self into a pickle file"""
+        with open(SAVE_FILE_NAME, 'w') as file_object:
+            pickle.dump(self, file_object)
+            
+            
+class AddressEntry(object):
+    """
+    AddressEntry instances hold and manage details of a person
+    """
+    def __init__(self, first_name=None, family_name=None,
+                  email_address=None, date_of_birth=None):
+        """Initialize attributes first_name,
+        family_name and date_of_birth.
+        Each argument should be a string.
+        date_of_birth should be of the form "MM DD, YYYY"
+        """
+        self.first_name = first_name
+        self.family_name = family_name
+        self.email_address = email_address
+        self.date_of_birth = date_of_birth
+        
+    def __repr__(self):
+        """
+        Given an AddressEntry object self return
+        a readable string representation
+        """
+        template = "AddressEntry(first_name='%s', "+\
+                    "family_name='%s',"+\
+                    "email_address='%s', "+\
+                    "date_of_birth='%s')"
+        return template%(self.first_name, self.family_name,
+                          self.email_address, self.date_of_birth)
+                          
+                          
+class Controller(object):
+    """
+    Controller acts as a way of managing the data stored in
+    an instance of AddressBook and the user, as well as managing
+    loading of stored data
+    """
+    def __init__(self):
+        """
+        Initialise controller. Look for a saved address book
+        If one is found,load it, otherwise create an empty
+        address book.
+        """
+        self.address_book = AddressBook()
+        person1 = AddressEntry("Eric", "Idle", "March 29, 1943")
+        self.address_book.add_entry(person1)
+        
+    def load(self):
+        """
+        Load a pickled address book from the standard save file
+        """
+        with open(SAVE_FILE_NAME, 'r') as file_object:
+            self.address_book = pickle.load(file_object)
+                    
+##### Functions Section
+
+##### Main Section
+if __name__ == "__main__":
+    controller = Controller()
+    print(controller.address_book.people)
+
+                                        
+                                        
+######## Page 266  
+
+>>> import os.path
+>>> SAVE_FILE_NAME = "address_book.pickle"
+>>> os.path.exists(SAVE_FILE_NAME)
+True
+>>> os.path.exists("some other filename that doesn't exist")
+False
+
+
+>>> from address_book import SAVE_FILE_NAME
+>>> from address_book import AddressBook, AddressEntry
+>>> person1 = AddressEntry("Eric", "Idle", None, "March 29, 1943")
+>>> address_book = AddressBook()
+>>> address_book.add_entry(person1)
+>>> address_book.save()
+>>> import os.path # confirm it's there
+>>> os.path.exists(SAVE_FILE_NAME)
+True
+
+                               
+######## Page 267
+                               
+#### Imports
+import cPickle as pickle
+import os.path
+
+
+#### Constants
+SAVE_FILE_NAME = "address_book.pickle"
+
+
+class Controller(object):
+    """
+    Controller acts as a way of managing the data stored in
+    an instance of AddressBook and the user, as well as managing
+    loading of stored data
+    """
+    def __init__(self):
+        """
+        Initialize controller. Look for a saved address book
+        If one is found,load it, otherwise create an empty
+        address book.
+        """
+        self.address_book = self.load()
+        if self.address_book is None:
+            self.address_book = AddressBook()
+              
+    def load(self):
+        """
+        Load a pickled address book from the standard save file
+        """
+        #TODO: Test this method
+        if os.path.exists(SAVE_FILE_NAME):
+            with open(SAVE_FILE_NAME, 'r') as file_object:
+                return pickle.load(file_object)
+        else:
+            return None
+                        
+                        
+                             
+######## Page 270-272           
+                                 
+                                 
+#### Constants
+SAVE_FILE_NAME = "address_book.pickle"
+INSTRUCTIONS = """Address Book Application
+(Python For Kids For Dummies Project 9)
+Press:
+a to add an entry
+d to display a list of all entries in summary form.
+i to print these instructions again
+q to quit.
+"""
+CONFIRM_QUIT_MESSAGE = 'Are you sure you want to quit (Y/n)? '
+
+                          
+    def __init__(self):
+        """
+        Initialize controller. Look for a saved address book
+        If one is found,load it, otherwise create an empty
+        address book.
+        """
+        self.address_book = self.load()
+        if self.address_book is None:
+            self.address_book = AddressBook()
+        self.run_interface()
+                                
+                                
+    def run_interface(self):
+        """ Application's main loop.
+        Get user input and respond accordingly"""
+        print(INSTRUCTIONS)
+        while True:
+            command = raw_input("What would you like to do? ")
+            if command == "a":
+                self.add_entry()
+            elif command == "q":
+                if confirm_quit():
+                    print("Saving")
+                    self.address_book.save()
+                    print("Exiting the application")
+                    break
+            elif command == "i":
+                print(INSTRUCTIONS)
+            elif command == "d":
+                self.display_summaries()
+            else:
+                template = "I don't recognise that instruction (%s)"
+                print(template%command)
+                
+    def add_entry(self):
+        """query user for values to add a new entry"""
+        print("In add_entry")
+
+    def display_summaries(self):
+        """ display summary information for each entry in
+        address book"""
+        print("In display_summaries")
+      
+      
+##### Functions Section
+def confirm_quit():
+    """Ask user to confirm that they want to quit
+    default to yes
+    Return True (yes, quit) or False (no, don't quit) """
+    spam = raw_input(CONFIRM_QUIT_MESSAGE)
+    if spam == 'n':
+        return False
+    else:
+        return True
+            
+           
+######## Page 274  
+                              
+                              
+"""
+Addressbook.py
+An address book program to store details of people I know.
+Stuff I'm storing is:
+first name
+
+family name
+email address
+date of birth
+[other stuff]
+Brendan Scott
+Feb 2015
+"""
+
+
+#### Imports
+import cPickle as pickle
+import os.path
+
+
+#### Constants
+SAVE_FILE_NAME = "address_book.pickle"
+INSTRUCTIONS = """Address Book Application
+(Python For Kids For Dummies Project 9)
+Press:
+a to add an entry
+d to display a list of all entries in summary form.
+i to print these instructions again
+q to quit.
+"""
+CONFIRM_QUIT_MESSAGE = 'Are you sure you want to quit (Y/n)? '
+SUMMARY_TEMPLATE = "%s %s DOB: %s email: %s"
+
+##### Classes Section
+class AddressBook(object):
+    """
+    AddressBook instances hold and manage a list of people
+    """
+    def __init__(self):
+        """ Set people attribute to an empty list"""
+        self.people = []
+        
+    def add_entry(self, new_entry):
+        """ Add a new entry to the list of people in the
+        address book the new_entry should be an instance                                      
+        of the AddressEntry class"""
+        self.people.append(new_entry)
+        
+    def save(self):
+        """ save a copy of self into a pickle file"""
+        with open(SAVE_FILE_NAME, 'w') as file_object:
+              pickle.dump(self, file_object)
+              
+              
+class AddressEntry(object):
+    """
+    AddressEntry instances hold and manage details of a person
+    """
+    def __init__(self, first_name=None, family_name=None,
+                    email_address=None, date_of_birth=None):
+        """Initialize attributes first_name,
+        family_name and date_of_birth.
+        Each argument should be a string.
+        date_of_birth should be of the form "MM DD, YYYY"
+        """
+        self.first_name = first_name
+        self.family_name = family_name
+        self.email_address = email_address
+        self.date_of_birth = date_of_birth
+        
+    def __repr__(self):
+        """
+        Given an AddressEntry object self return
+        a readable string representation
+        """
+        template = "AddressEntry(first_name='%s', "+\
+                      "family_name='%s',"+\
+                      " email_address='%s', "+\
+                      "date_of_birth='%s')"
+        return template%(self.first_name, self.family_name,
+                          self.email_address, self.date_of_birth)
+                            
+                            
+class Controller(object):
+    """
+    Controller acts as a way of managing the data stored in
+    an instance of AddressBook and the user, as well as managing
+    loading of stored data
+    """
+    def __init__(self):
+        """
+        Initialize controller. Look for a saved address book
+        If one is found,load it, otherwise create an empty
+        address book.
+        """
+        self.address_book = self.load()
+        if self.address_book is None:
+            self.address_book = AddressBook()
+        self.run_interface()
+        
+    def load(self):
+        """
+        Load a pickled address book from the standard save file
+        """
+        if os.path.exists(SAVE_FILE_NAME):
+            with open(SAVE_FILE_NAME, 'r') as file_object:
+                address_book = pickle.load(file_object)
+            return address_book
+        else:
+            return None
+            
+    def run_interface(self):
+        """ Application's main loop.
+        Get user input and respond accordingly"""
+        print(INSTRUCTIONS)
+        while True:
+            command = raw_input("What would you like to do? ")
+            if command == "a":
+                self.add_entry()
+            elif command == "q":
+                if confirm_quit():
+                    print("Saving")
+                    self.address_book.save()
+                    print("Exiting the application")
+                    break
+            elif command == "i":
+                print(INSTRUCTIONS)
+            elif command == "d":
+                self.display_summaries()
+            else:
+                template = "I don't recognise that instruction (%s)"
+                print(template%command)
+                
+    def add_entry(self):
+        """query user for values to add a new entry"""
+        print("Adding a new person to the address book")
+        print("What is the person's:")
+        first_name = raw_input("First Name? ")
+        if first_name == "q":
+            print("Not Adding")
+            return
+        family_name = raw_input("Family Name? ")
+        if family_name == "q":
+            print("Not Adding")
+            return
+        email_address = raw_input("Email Address? ")
+        if email_address == "q":
+            print("Not Adding")
+            return
+        DOB_PROMPT = "Date of Birth (Month day, year)? "
+        date_of_birth = raw_input(DOB_PROMPT)
+        if date_of_birth == "q":
+            print("Not Adding ")
+            return
+        entry = AddressEntry(first_name, family_name,
+                             email_address, date_of_birth)
+        self.address_book.add_entry(entry)
+        values = (first_name, family_name)
+        print("Added address entry for %s %s\n"%values)
+            
+    def display_summaries(self):
+        """ display summary information for each entry in
+        address book"""
+        print("Displaying Summaries")
+        for index, e in enumerate(self.address_book.people):
+            values = (e.first_name, e.family_name,
+                      e.date_of_birth, e.email_address)
+            entry = SUMMARY_TEMPLATE%values
+            print("%s: %s"%(index+1, entry))
+            # start numbering at 1
+           
+           
+##### Functions Section
+def confirm_quit():
+    """Ask user to confirm that they want to quit
+    default to yes
+    Return True (yes, quit) or False (no, don't quit) """
+    spam = raw_input(CONFIRM_QUIT_MESSAGE)
+    if spam == 'n':
+        return False
+    else:
+        return True
+        
+        
+##### Main Section
+if __name__ == "__main__":
+    controller = Controller()
