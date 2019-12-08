@@ -1,0 +1,231 @@
+Copyright (c) 2015 Brendan Scott
+
+Permission is granted, free of charge, to any person obtaining a copy
+of this software (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+######################################################### 
+## Page numbers correspond to the first edition of Python for Kids for Dummies
+## ISBN 9781119093107
+## If you are copying and pasting, 
+## don't copy the >>>, the ... or the first space immediately 
+## after either of them. 
+## output is shown for some commands as well (it's not code
+## so don't try copying it, but compare your output to what's here)
+#########################################################
+
+
+
+
+######## Page 220  
+
+>>> print("Hi there %s. You are such a good author."%"Brendan")
+Hi there Brendan. You are such a good author.
+                              
+
+######## Page 222   
+                             
+                             
+>>> "%s %s"%(1,2)
+'1 2'
+                             
+                             
+"%s %s"%(1) #(two specifiers, one value)
+"%s %s"%(1,2,3) #(two specifiers, three values)
+                              
+                              
+>>> values = (1,2)
+>>> "%s %s"%values
+'1 2'
+>>> # Snuck in a tuple:
+>>> type(values)
+<type 'tuple'>
+                              
+                              
+######## Page 223
+       
+                           
+                           
+>>> my_tuple = ('e','3')
+>>> for e in my_tuple:
+        print(e)
+e
+3
+>>> my_tuple[0]
+'e'
+
+
+######## Page 224 
+
+>>> my_tuple[1]
+'3'
+>>> my_tuple(0)   # use [] not ()!
+
+Traceback (most recent call last):
+  File "<pyshell#42>", line 1, in <module>
+      my_tuple(0) # [] not ()!
+TypeError: 'tuple' object is not callable
+
+
+>>> my_one_element_tuple = (1,)
+>>> my_one_element_tuple
+(1,)
+                            
+                              
+######## Page 225
+                            
+                            
+>>> def test_function():
+        return (1,2,3) # returns a tuple with three elements
+        
+>>> a = test_function()
+>>> a
+(1, 2, 3)
+>>> a,b,c = test_function()
+>>> a
+1
+>>> b
+2
+>>> c
+3
+>>> a,b = test_function()
+
+Traceback (most recent call last):
+  File "<pyshell#59>", line 1, in <module>
+    a,b = test_function()
+ValueError: too many values to unpack
+                            
+                            
+>>> a,b,c = (1,2,3) # unpack the tuple into a, b, c
+>>> print("a: %s, b: %s, c: %s"%(a,b,c))
+a: 1, b: 2, c: 3
+>>> a,b = (1,2,3) # three values but only two variables.
+
+Traceback (most recent call last):
+  File "<pyshell#62>", line 1, in <module>
+    a,b = (1,2,3)
+ValueError: too many values to unpack
+
+
+######## Page 227
+
+                                 
+"""silly_sentencer.py
+This program prints silly sentences by mapping random words
+into a formatting template
+Brendan Scott
+Jan 2015
+"""
+BASE_SENTENCE = "My Python teacher wrote the Python book."
+template = "%s %s the %s %s."
+persons = ["My Python teacher"]
+verbs = ["wrote"]
+adjectives = ["Python"]
+nouns = ["book"]
+                          
+######## Page 228 
+
+# Main Section
+if __name__ == "__main__":
+    person = persons[0]
+    verb = verbs[0]
+    adjective = adjectives[0]
+    noun = nouns[0]
+    
+    format_values = (person, verb, adjective, noun)
+    
+    print(BASE_SENTENCE)
+    print(template%format_values)
+    print(BASE_SENTENCE == template%format_values)
+                              
+                               
+                      
+######## Page 229
+                           
+>>> import random
+>>> sample_list = [x for x in range(10)]
+>>> random.choice(sample_list)
+1
+                           
+
+######## Page 229-230
+
+"""silly_sentencer.py
+This program prints silly sentences by mapping random words
+into a formatting template
+Brendan Scott
+Jan 2015
+"""
+                                     
+# Imports Section
+import random
+
+# Constants Section
+BASE_SENTENCE= "My Python teacher wrote the Python book."
+template = "%s %s the %s %s."
+
+persons = ["My Python teacher"]
+verbs = ["wrote"]
+adjectives = ["Python"]
+nouns = ["book"]
+
+# Main Section
+if __name__ == "__main__":
+      person = random.choice(persons)
+      verb = random.choice(verbs)
+      adjective = random.choice(adjectives)
+      noun = random.choice(nouns)
+      
+      format_values = (person, verb, adjective, noun)
+      
+      print(BASE_SENTENCE)
+      print(template%format_values)
+                             
+
+######## Page 232               
+
+"""silly_sentencer.py
+This program prints silly sentences by mapping random words
+into a formatting template
+Brendan Scott
+Jan 2015
+"""
+
+# Imports Section
+import random
+
+# Constants Section
+BASE_SENTENCE = "My Python teacher wrote the Python book."
+template = "%s %s the %s %s."
+persons = ["My Python teacher", "Dinsdale Piranha", "Tim", "Mrs Pepperpot", "My dad", "The Hungarian"]
+verbs = ["wrote", "sneezed", "looked at", "drove", "made", "stole"]
+adjectives = ["Python", "slippery", "funniest", "big", "smelly", "poky", "silly"]
+nouns = ["book", "eels", "hovercraft", "nose", "shoes", "joke", "walk"]
+            
+            
+# Main Section
+if __name__ == "__main__":
+    person = random.choice(persons)
+    verb = random.choice(verbs)
+    adjective = random.choice(adjectives)
+    noun = random.choice(nouns)
+    
+    format_values = (person, verb, adjective, noun)
+    
+##    print(BASE_SENTENCE)
+    print(template%format_values)
