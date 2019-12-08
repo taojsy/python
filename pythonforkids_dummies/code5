@@ -1,0 +1,519 @@
+Copyright (c) 2015 Brendan Scott
+
+Permission is granted, free of charge, to any person obtaining a copy
+of this software (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+######################################################### 
+## Page numbers correspond to the first edition of Python for Kids for Dummies
+## ISBN 9781119093107
+## If you are copying and pasting, 
+## don't copy the >>>, the ... or the first space immediately 
+## after either of them. 
+## output is shown for some commands as well (it's not code
+## so don't try copying it, but compare your output to what's here)
+#########################################################
+
+
+######## Page 105
+
+
+>>> def print_hello_world():
+...     """Hello World as a function"""
+...     print('Hello World!')
+
+
+>>> print_hello_world()
+Hello World!
+
+
+######## Page 107
+
+                 
+>>> print_hello_world
+<function print_hello_world at 0x7f8dd8043b90>
+                            
+                            
+######## Page 108
+                              
+
+>>> def test_function():
+    """Just a function stub to illustrate some basic things about
+docstrings. Add a docstring as a string literal at the start of the
+function code block. Use triple double quotes."""
+    pass
+                               
+
+######## Page 109
+                               
+>>> help(test_function)
+>>> Help on function test_function in module __main__:
+test_function()
+    Just a function stub to illustrate some basic things
+    about docstrings. Add a docstring as a string literal
+    at the start of the function code block. Use triple
+    double quotes.
+                            
+######## Page 110                                                     
+                                                     
+>>> def solve_world_hunger():
+          pass
+
+
+
+>>> def solve_world_hunger():
+        """This is a function that I will write later.
+        It will automatically feed the world's starving masses"""
+
+        
+######## Page 111
+                                           
+""" A teeny tiny program to demonstrate main"""
+
+def test_function():
+      """ Just a nothing function. Ignore it"""
+      
+test_function()
+
+
+
+
+import random
+
+computers_number = random.randint(1,100)
+prompt = 'What is your guess? '
+
+while True:
+    players_guess = raw_input(prompt)
+    if computers_number == int(players_guess):
+        print('Correct!')
+        break
+    elif computers_number > int(players_guess):
+        print('Too low')
+    else:
+        print('Too high')
+        
+        
+                           
+######## Page 113              
+              
+"""guess_game_fun
+Guess Game with a Function
+In this project the guess game is recast using a function"""
+
+import random
+
+computers_number = random.randint(1,100)
+PROMPT = 'What is your guess? '
+
+def do_guess_round():
+    """Choose a random number, ask the user for a guess
+    check whether the guess is true
+    and repeat until the user is correct"""
+    while True:
+        players_guess = raw_input(PROMPT)
+        if computers_number == int(players_guess):
+            print('Correct!')
+            break
+        elif computers_number > int(players_guess):
+            print('Too low')
+        else:
+            print('Too high')
+            
+do_guess_round()
+
+
+######## Page 114
+
+while True:
+      do_guess_round()
+
+>>> ================================== RESTART ================================
+>>>
+
+
+######## Page 117
+"""guess_game_fun
+Guess Game with a Function
+In this project the guess game is recast using a function"""
+
+import random
+
+computers_number = random.randint(1,100)
+PROMPT = 'What is your guess? '
+
+def do_guess_round():
+    """Choose a random number, ask the user for a guess
+    check whether the guess is true
+    and repeat until the user is correct"""
+    computers_number = random.randint(1,100) # Added
+    while True:
+        players_guess = raw_input(PROMPT)
+        if computers_number == int(players_guess):
+            print('Correct!')
+            break
+        elif computers_number > int(players_guess):
+            print('Too low')
+        else:
+            print('Too high')
+            
+while True:
+    # Print statements added:
+    print("Starting a new Round!")
+    print("The computer's number should be "+str(computers_number))
+    print("Let the guessing begin!!!")
+    do_guess_round()
+    print("") # blank line
+
+                           
+
+
+######## Page 120-121
+                            
+""" locals.py
+examples of local variables"""
+
+A = 'This is the text message from main'
+
+def test1():
+    print('In test1.')
+    print(A)
+    print('Leaving test1.')
+    
+def test2():
+    print('In test2.')
+    A = "This is test2's text message."
+    print(A)
+    print('Leaving test2.')
+    
+def test3():
+    print('In test3.')
+    print(A)
+    A = "This is test3's text message."
+    print('Leaving test3')
+    
+test1()
+print('Back in main')
+print(A)
+test2()
+print('Back in main')
+print(A)
+test3()
+
+Running locals.py should give the following output (see figure 5-3):
+
+In test1.
+This is the text message from main
+Leaving test1.
+Back in main
+This is the text message from main
+In test2.
+This is test2's text message.
+Leaving test2.
+Back in main
+This is the text message from main
+In test3.
+
+Traceback (most recent call last):
+  File "/data-current/dummies book/code_folder/test.py", line 29, in <module>
+    test3()
+  File "/data-current/dummies book/code_folder/test.py", line 19, in test3
+    print(A)
+UnboundLocalError: local variable 'A' referenced before assignment
+
+                            
+                            
+######## Page 123
+
+From figure 5-4:
+>>> def add_one(a_number):
+        print(a_number)
+
+        
+>>> add_one(1)
+1
+>>> add_one(4)
+4
+
+
+######## Page 124
+
+>>> add_one()
+
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    add_one()
+TypeError: add_one() takes exactly 1 argument (0 given)
+                 
+                 
+######## Page 125
+                           
+>>> def print_two_numbers(a,b):
+          print(a,b)
+>>> print_two_numbers(1,2)
+(1, 2)
+        
+From figure 5-5:
+
+>>> def print_two_numbers(b,a):
+        print("a= "+str(a)+", b= "+str(b))
+
+        
+>>> print_two_numbers(1,2)
+a= 2, b= 1
+
+
+######## Page 126
+                              
+>>> def add_one(a,b,display=True):
+        if display:
+              print("a= "+str(a))
+              print("b= "+str(b))
+              
+>>> add_one(1,2)
+a= 1
+b= 2
+>>> add_one(1,2,False)
+>>>
+
+
+>>> def add_one(display=True,a,b):
+        pass
+SyntaxError: non-default argument follows default argument
+                             
+                             
+######## Page 127
+>>> def add_one(a,b,include_pumpkin=False,display=False):
+        filler = " "
+        if include_pumpkin:
+            filler = " pumpkin! "
+        if display:
+            print(str(a)+filler+str(b))
+            
+>>> add_one(1,2,True)
+>>> # True being sent to include_pumpkin
+>>> # but display still False so nothing is printed
+>>> add_one(1,2,True,True) # True being sent to both
+1 pumpkin! 2
+>>> add_one(1,2,display=True,include_pumpkin=True)
+1 pumpkin! 2
+>>> add_one(1,2,display=True,include_pumpkin=False)
+1 2
+                            
+             
+######## Page 128
+                             
+>>> def add_one(a_number):
+    return a_number+1
+
+
+>>> add_one(4)
+5
+
+>>> retval= add_one(4)
+retval
+>>> retval
+5
+
+>>> def print_hello_world():
+        """Hello World as a function"""
+        print('Hello World!')
+          
+          
+######## Page 129
+
+>>> retval = print_hello_world()
+Hello World!
+>>> print(retval)
+None
+
+######## Page 130                             
+"""guess_game_fun
+Guess Game with a Function
+In this project the guess game is recast using a function"""
+import random
+
+PROMPT = 'What is your guess? '
+
+def do_guess_round():
+    """Choose a random number, ask the user for a guess
+    check whether the guess is true
+    and repeat until the user is correct"""
+    computers_number = random.randint(1, 100)
+    number_of_guesses = 0 # Added
+    
+    while True:
+        players_guess = raw_input(PROMPT)
+        number_of_guesses = number_of_guesses+1 # Added
+        if computers_number == int(players_guess):
+            print('Correct!')
+            return number_of_guesses # Changed
+        elif computers_number > int(players_guess):
+            print('Too low')
+        else:
+            print('Too high')
+            
+total_rounds = 0 # Added
+total_guesses = 0 # Added
+
+while True:
+    total_rounds = total_rounds+1 # Added
+    print("Starting round number: "+str(total_rounds)) # Changed
+    print("Let the guessing begin!!!")
+    this_round = do_guess_round() # Changed
+    total_guesses = total_guesses+this_round # Added
+    print("You took "+str(this_round)+" guesses") # Added
+    avg = str(total_guesses/float(total_rounds)) # Added
+    print("Your guessing average = "+avg) # Added
+    print("") # blank line
+                          
+######## Page 132
+                             
+CONFIRM_QUIT_MESSAGE = 'Are you sure you want to quit (Y/n)? '
+
+def confirm_quit():
+    """Ask user to confirm that they want to quit
+    default to yes
+    Return True (yes, quit) or False (no, don't quit) """
+    spam = raw_input(CONFIRM_QUIT_MESSAGE)
+    if spam == 'n':
+        return False
+    else:
+        return True
+                                          
+######## Page 133
+
+QUIT = -1
+QUIT_TEXT = 'q'
+
+
+######## Page 134                    
+                             
+    if players_guess == QUIT_TEXT:
+        if confirm_quit():
+            return QUIT
+        else:
+            continue # that is, do next round of loop
+                            
+
+######## Page 135
+
+# new if condition (and code block) to test against quit
+if this_round == QUIT:
+    total_rounds = total_rounds - 1
+    avg = str(total_guesses/float(total_rounds))
+    if total_rounds == 0:
+        stats_message = 'You completed no rounds. '+\
+                        'Please try again later.'
+    else:
+        stats_message = 'You played ' + str(total_rounds) +\
+                        ' rounds, with an average of '+\
+                        str(avg)
+    break
+                              
+                               
+                               
+print(QUIT_MESSAGE)
+print(stats_message)
+                            
+                             
+######## Page 136                                
+# A short program to demonstrate sys.exit
+import sys
+sys.exit()
+print('if you can read this I have not exited when I should have')
+                       
+                       
+######## Page 137-139  
+
+"""guess_game_fun
+Guess Game with a Fun ction
+In this project the guess game is recast using a function"""
+
+import random
+
+PROMPT = 'What is your guess? '
+
+# New constants
+QUIT = -1
+QUIT_TEXT = 'q'
+QUIT_MESSAGE = 'Thank you for playing'
+CONFIRM_QUIT_MESSAGE = 'Are you sure you want to quit (Y/n)? '
+
+# New confirm_quit function
+def confirm_quit():
+    """Ask user to confirm that they want to quit
+    default to yes
+    Return True (yes, quit) or False (no, don't quit) """
+    spam = raw_input(CONFIRM_QUIT_MESSAGE)
+    if spam == 'n':
+        return False
+    else:
+        return True
+        
+def do_guess_round():
+    """Choose a random number, ask the user for a guess
+    check whether the guess is true
+    and repeat until the user is correct"""
+    computers_number = random.randint(1, 100)
+    number_of_guesses = 0
+    
+    while True:
+        players_guess = raw_input(PROMPT)
+        # new if clause to test against quit
+        if players_guess == QUIT_TEXT:
+            if confirm_quit():
+                  return QUIT
+            else:
+                  continue # that is, do next round of loop
+        number_of_guesses = number_of_guesses+1
+        if computers_number == int(players_guess):
+            print('Correct!')
+            return number_of_guesses
+        elif computers_number > int(players_guess):
+            print('Too low')
+        else:
+            print('Too high')
+          
+total_rounds = 0
+total_guesses = 0
+
+while True:
+    total_rounds = total_rounds+1
+    print("Starting round number: "+str(total_rounds))
+    print("Let the guessing begin!!!")
+    this_round = do_guess_round()
+    
+    # new if condition (and code block) to test against quit
+    if this_round == QUIT:
+        total_rounds = total_rounds - 1
+        avg = str(total_guesses/float(total_rounds))
+        if total_rounds == 0:
+            stats_message = 'You completed no rounds. '+\
+                              'Please try again later.'
+        else:
+            stats_message = 'You played ' + str(total_rounds) +\
+                              ' rounds, with an average of '+\
+                              str(avg)
+        break
+    total_guesses = total_guesses+this_round
+    avg = str(total_guesses/float(total_rounds))
+    print("You took "+str(this_round)+" guesses")
+    print("Your guessing average = "+str(avg))
+    print("")
+# Added exit messages
+print(stats_message)
