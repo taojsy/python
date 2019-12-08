@@ -1,0 +1,482 @@
+Copyright (c) 2015 Brendan Scott
+
+Permission is granted, free of charge, to any person obtaining a copy
+of this software (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+######################################################### 
+## Page numbers correspond to the first edition of Python for Kids for Dummies
+## ISBN 9781119093107
+## If you are copying and pasting, 
+## don't copy the >>>, the ... or the first space immediately 
+## after either of them. 
+## output is shown for some commands as well (it's not code
+## so don't try copying it, but compare your output to what's here)
+#########################################################
+
+
+
+
+######## Page 283
+ 
+"""
+math_trainer.py
+Train your times tables.
+Initial Features:
+* Print out times table for a given number.
+* Limit tables to a lower number (default is 1)
+and an upper number (default is 12).
+* Pose test questions to the user
+* Check whether the user is right or wrong
+* Track the user's score.
+Brendan Scott
+February 2015
+"""
+#### Constants Section
+TEST_QUESTION = (4, 6)
+QUESTION_TEMPLATE = "What is %sx%s? "
+#### Function Section
+#### Testing Section
+question = TEST_QUESTION
+prompt = QUESTION_TEMPLATE%question
+correct_answer = question[0]*question[1] # indexes start from 0
+answer = raw_input(prompt)
+if int(answer)== correct_answer:
+    print("Correct!")
+else:
+    print("Incorrect")
+
+>>> ================================ RESTART ================================
+>>>
+What is 4x6? 24
+Correct!
+>>> ================================ RESTART ================================
+>>>
+What is 4x6? 25
+Incorrect
+
+######## Page 286    
+
+#### Constants
+TEST_QUESTION = (4, 6)
+QUESTION_TEMPLATE = "What is %sx%s? "
+LOWER = 1
+UPPER = 12
+
+#### Function Section
+def make_question_list(lower=LOWER, upper=UPPER):
+    """ prepare a list of questions in the form (x,y)
+    where x and y are in the range from LOWER to UPPER inclusive
+    """
+    return [(x+1, y+1) for x in range(lower-1, upper)
+                        for y in range(lower-1, upper)]
+
+######## Page 287
+                         
+#### Testing Section
+question_list = make_question_list()
+print(question_list)
+
+#### Testing Section
+for lower,upper in [(2, 5), (4, 6), (7, 11)]:
+    question_list = make_question_list(lower, upper)
+    print(question_list)
+                         
+                            
+                            
+######## Page 289
+                              
+#### Imports Section
+import random
+
+
+#### Function Section
+def make_question_list(lower=LOWER, upper=UPPER, random_order=True):
+      """ prepare a list of questions in the form (x,y)
+      where x and y are in the range from LOWER to UPPER inclusive
+      If random_order is true, rearrange the questions in a random order
+      """
+      spam = [(x+1, y+1) for x in range(lower-1,upper)
+                          for y in range(lower-1,upper)]
+      if random_order:
+          random.shuffle(spam)
+      return spam
+
+      
+######## Page 292      
+
+
+#### Constants Section
+TEST_QUESTION = (4, 6)
+QUESTION_TEMPLATE = "What is %sx%s? "
+LOWER = 1
+UPPER = 12
+MAX_QUESTIONS = 3 # for testing, you can increase it later
+
+
+def do_testing():
+    """ conduct a round of testing """
+    question_list = make_question_list()
+    score = 0
+    for i, question in enumerate(question_list):
+        if i >= MAX_QUESTIONS:
+            break
+        prompt = QUESTION_TEMPLATE%question
+        correct_answer = question[0]*question[1]
+        # indexes start from 0
+        answer = raw_input(prompt)
+        
+        if int(answer) == correct_answer:
+            print("Correct!")
+            score = score+1
+        else:
+            print("Incorrect, should have been %s"%(correct_answer))
+            
+    print("You scored %s"%score)
+
+    
+######## Page 293
+                      
+                      
+#### Testing Section
+do_testing()
+
+                                  
+                            
+######## Page 295
+                           
+TIMES_TABLE_ENTRY = "%s x %s = %s"
+
+
+def display_times_tables(upper=UPPER):
+    """
+    Display the times tables up to UPPER
+    """
+    for x in range(upper):
+        for y in range(upper):
+            entry = TIMES_TABLE_ENTRY%(x+1, y+1, (x+1)*(y+1))
+            print(entry)
+
+
+#### Testing Section
+#do_testing()
+display_times_tables()
+
+######## Page 296 
+                              
+TIMES_TABLE_ENTRY = "%2i x %2i = %3i"
+                              
+
+######## Page 297
+                             
+                             
+>>> TIMES_TABLE_ENTRY = "%2i x %2i = %3i"
+>>> entry = TIMES_TABLE_ENTRY%(12,12,144)
+>>> len(entry)
+13
+                              
+                              
+######## Page 298   
+                            
+
+TIMES_TABLE_ENTRY = "%2i x %2i = %3i "
+
+def display_times_tables(upper=UPPER):
+    """
+    Display the times tables up to UPPER
+    """
+    tables_per_line = 5
+    tables_to_print = range(1, upper+1)
+    # get a batch of 5 to print
+    batch = tables_to_print[:tables_per_line]
+    # remove them from the list
+    tables_to_print = tables_to_print[tables_per_line:]
+    while batch != []: # stop when there's no more to print
+        for x in range(1, upper+1):
+            # this goes from 1 to 12 and is the rows
+            accumulator = []
+            for y in batch:
+                # this covers only the tables in the batch
+                # it builds the columns
+                accumulator.append(TIMES_TABLE_ENTRY%(y, x, x*y))
+            print("".join(accumulator)) # print one row
+        print("\n") # vertical separation between blocks of tables.
+        # now get another batch and repeat.
+        batch = tables_to_print[:tables_per_line]
+        tables_to_print = tables_to_print[tables_per_line:]
+                             
+                             
+                             
+######## Page 302  
+                              
+                              
+INSTRUCTIONS = """Welcome to Math Trainer
+This application will train you on your times tables.
+It can either print one or more of the tables for you
+so that you can revise (training) or it can test
+your times tables.
+"""
+
+
+def do_quit():
+    """ quit the application"""
+    print("In quit")
+
+
+#### Main Section
+if __name__ == "__main__":
+    while True:
+        print(INSTRUCTIONS)
+        raw_input_prompt = "Press: 1 for training,"+\
+                            " 2 for testing, 3 to quit.\n"
+        selection = raw_input(raw_input_prompt)
+        selection = selection.strip()
+        while selection not in ["1", "2", "3"]:
+            selection = raw_input("Please type either 1, 2 or 3: ")
+            selection = selection.strip()
+            
+        if selection == "1":
+            display_times_tables()
+        elif selection == "2":
+            do_testing()
+        else: # has to be 1, 2 or 3 so must be 3 (quit)
+            do_quit()
+                            
+######## Page 304   
+                             
+#### Imports Section
+import random
+import sys
+
+
+CONFIRM_QUIT_MESSAGE = 'Are you sure you want to quit (Y/n)? '
+
+
+def do_quit():
+      """ quit the application"""
+      if confirm_quit():
+          sys.exit()
+      print("In quit (not quitting, returning)")
+      
+def confirm_quit():
+      """Ask user to confirm that they want to quit
+      default to yes
+      Return True (yes, quit) or False (no, don't quit) """
+      spam = raw_input(CONFIRM_QUIT_MESSAGE)
+      if spam == 'n':
+          return False
+      else:
+          return True
+                             
+                             
+######## Page 305
+
+
+>>> import time
+>>> time.time() # current time
+1433075973.088198
+
+######## Page 306      
+                           
+>>> t1 = time.time() # current time
+>>> t2 = time.time()# current time again (I waited a smidge)
+>>> t2-t1 # number of seconds between first and second calls
+5.041269063949585
+
+######## Page 307
+
+#### Imports Section
+import random
+import sys
+import time
+
+SCORE_TEMPLATE = "You scored %s (%i%%) in %.1f seconds"
+
+def do_testing():
+    """ conduct a round of testing """
+    question_list = make_question_list()
+    score = 0
+    start_time = time.time()
+    for i, question in enumerate(question_list):
+        if i >= MAX_QUESTIONS:
+            break
+        prompt = QUESTION_TEMPLATE%question
+        correct_answer = question[0]*question[1]
+              # indexes start from 0
+        answer = raw_input(prompt)
+        
+        if int(answer) == correct_answer:
+            print("Correct!")
+            score = score+1
+        else:
+            print("Incorrect, should have been %s"%(correct_answer))
+            
+    end_time = time.time()
+    time_taken = end_time-start_time
+    percent_correct = int(score/float(MAX_QUESTIONS)*100)
+    print(SCORE_TEMPLATE%(score, percent_correct, time_taken))
+    
+    
+#########################################
+###  Full Code:
+#########################################
+
+"""
+math_trainer.py
+Train your times tables.
+Initial Features:
+* Print out times table for a given number.
+* Limit tables to a lower number (default is 1) and
+an upper number (default is 12).
+* Pose test questions to the user
+* Check whether the user is right or wrong
+* Track the user's score.
+Brendan Scott
+February 2015
+"""
+
+#### Imports Section
+import random
+import sys
+import time
+
+#### Constants Section
+TEST_QUESTION = (4, 6)
+QUESTION_TEMPLATE = "What is %sx%s? "
+LOWER = 1
+UPPER = 12
+MAX_QUESTIONS = 10 # for testing, you can increase it later
+TIMES_TABLE_ENTRY = "%2i x %2i = %3i "
+
+INSTRUCTIONS = """Welcome to Math Trainer
+This application will train you on your times tables.
+It can either print one or more of the tables for you
+so that you can revise (training) or you it can test
+you on your times tables.
+"""
+CONFIRM_QUIT_MESSAGE = 'Are you sure you want to quit (Y/n)? '
+SCORE_TEMPLATE = "You scored %s (%i%%) in %.1f seconds"
+
+#### Function Section
+def make_question_list(lower=LOWER, upper=UPPER, random_order=True):
+    """ prepare a list of questions in the form (x,y)
+    where x and y are in the range from LOWER to UPPER inclusive
+    If random_order is true, rearrange the questions in a random
+    order
+    """
+    spam = [(x+1, y+1) for x in range(lower-1, upper)
+                       for y in range(lower-1, upper)]
+    if random_order:
+        random.shuffle(spam)
+    return spam
+
+def display_times_tables(upper=UPPER):
+    """
+    Display the times tables up to UPPER
+    """
+    tables_per_line = 5
+    tables_to_print = range(1, upper+1)
+    # get a batch of 5 to print
+    batch = tables_to_print[:tables_per_line]
+    # remove them from the list 
+    tables_to_print = tables_to_print[tables_per_line:]
+    while batch != []: # stop when there's no more to print
+        for x in range(1, upper+1):
+            # this goes from 1 to 12 and is the rows 
+            accumulator = []
+            for y in batch:
+                # this covers only the tables in the batch
+                # it builds the columns
+                accumulator.append(TIMES_TABLE_ENTRY%(y, x, x*y))
+            print("".join(accumulator)) # print one row
+        print("\n") # vertical separation between blocks of tables.
+        # now get another batch and repeat. 
+        batch = tables_to_print[:tables_per_line]
+        tables_to_print = tables_to_print[tables_per_line:]
+
+    
+def do_testing():
+    """ conduct a round of testing """
+    question_list = make_question_list()
+    score = 0
+    start_time = time.time()
+    for i, question in enumerate(question_list):
+        if i >= MAX_QUESTIONS:
+            break
+        prompt = QUESTION_TEMPLATE%question
+        correct_answer = question[0]*question[1]
+        # indexes start from 0
+        answer = raw_input(prompt)
+
+        if int(answer) == correct_answer:
+            print("Correct!")
+            score = score+1
+        else:
+            print("Incorrect, should have "+\
+                  "been %s"%(correct_answer))
+
+    end_time = time.time()
+    time_taken = end_time-start_time
+    percent_correct = int(score/float(MAX_QUESTIONS)*100)
+    print(SCORE_TEMPLATE%(score, percent_correct, time_taken))
+
+def do_quit():
+    """ quit the application"""
+    if confirm_quit():
+        sys.exit()
+    print("In quit (not quitting, returning)")
+
+def confirm_quit():
+    """Ask user to confirm that they want to quit
+    default to yes 
+    Return True (yes, quit) or False (no, don't quit) """
+    spam = raw_input(CONFIRM_QUIT_MESSAGE)
+    if spam == 'n':
+        return False
+    else:
+        return True    
+
+
+#### Testing Section
+
+#do_testing()
+##display_times_tables()
+
+#### Main Section
+
+if __name__ == "__main__":
+    while True:
+        print(INSTRUCTIONS)
+        raw_input_prompt = "Press: 1 for training,"+\
+                           " 2 for testing, 3 to quit.\n"
+        selection = raw_input(raw_input_prompt)
+        selection = selection.strip()
+        while selection not in ["1", "2", "3"]:
+            selection = raw_input("Please type either 1, 2, or 3: ")
+            selection = selection.strip()
+
+        if selection == "1":
+            display_times_tables()
+        elif selection == "2":
+            do_testing()
+        else:  # has to be 1, 2 or 3 so must be 3 (quit)
+            do_quit()
+
+
+
+    
