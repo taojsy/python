@@ -1,0 +1,418 @@
+Copyright (c) 2015 Brendan Scott
+
+Permission is granted, free of charge, to any person obtaining a copy
+of this software (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+######################################################### 
+## Page numbers correspond to the first edition of Python for Kids for Dummies
+## ISBN 9781119093107
+## If you are copying and pasting, 
+## don't copy the >>>, the ... or the first space immediately 
+## after either of them. 
+## output is shown for some commands as well (it's not code
+## so don't try copying it, but compare your output to what's here)
+#########################################################
+
+######## Page 144               
+   
+>>> my_message = 'Hello World!'
+
+>>> dir(my_message)
+
+######## Page 145
+                 
+>>> dir(my_message)
+['__add__', '__class__', '__contains__', '__delattr__',
+'__doc__', '__eq__', '__format__', '__ge__',
+'__getattribute__', '__getitem__', '__getnewargs__',
+'__getslice__', '__gt__', '__hash__', '__init__', '__le__',
+'__len__', '__lt__', '__mod__', '__mul__', '__ne__',
+'__new__', '__reduce__', '__reduce_ex__', '__repr__',
+'__rmod__', '__rmul__', '__setattr__', '__sizeof__',
+'__str__', '__subclasshook__', '_formatter_field_name_split',
+'_formatter_parser', 'capitalize', 'center', 'count',
+'decode', 'encode', 'endswith', 'expandtabs', 'find',
+'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower',
+'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower',
+'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust',
+'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines',
+'startswith', 'strip', 'swapcase', 'title', 'translate',
+'upper', 'zfill']
+                             
+######## Page 146       
+                        
+>>> type('a string object')
+<type 'str'>
+>>> type([]) # that is, an empty list
+<type 'list'>
+
+>>> id('a string object')
+139900104204840
+
+######## Page 147
+                           
+>>> help(my_message.upper) # spot the dot?
+Help on built-in function upper:
+upper(...)
+    S.upper() -> string
+    Return a copy of the string S converted to uppercase.
+          
+          
+######## Page 148   
+
+>>> my_message.upper
+<built-in method upper of str object at 0x7f3d0803e260>
+
+>>> my_message.upper()
+'HELLO WORLD!'
+
+
+>>> my_message
+'Hello World!'
+  
+  
+######## Page 149
+                
+>>> range(3)
+[0, 1, 2]
+>>> for i in range(3):
+        print(i)
+0
+1
+2
+                                
+                                
+######## Page 150
+                           
+>>> for i in dir(my_message):
+          print i
+__add__
+__class__
+__contains__
+[...]
+                            
+>>> string_object_attributes = dir(my_message)
+>>> string_object_attributes
+['__add__', '__class__', '__contains__', '__delattr__',
+'__doc__', '__eq__', '__format__', '__ge__',
+'__getattribute__', '__getitem__', '__getnewargs__',
+'__getslice__', '__gt__', '__hash__', '__init__', '__le__',
+'__len__', '__lt__', '__mod__', '__mul__', '__ne__',
+'__new__', '__reduce__', '__reduce_ex__', '__repr__',
+'__rmod__', '__rmul__', '__setattr__', '__sizeof__',
+'__str__', '__subclasshook__', '_formatter_field_name_split',
+'_formatter_parser', 'capitalize', 'center', 'count',
+'decode', 'encode', 'endswith', 'expandtabs', 'find',
+'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower',
+'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower',
+'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust',
+'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines',
+'startswith', 'strip', 'swapcase', 'title', 'translate',
+'upper', 'zfill']
+
+
+>>> dir(string_object_attributes)
+['__add__', '__class__', '__contains__', '__delattr__',
+'__delitem__', '__delslice__', '__doc__', '__eq__',
+'__format__', '__ge__', '__getattribute__', '__getitem__',
+'__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__',
+'__init__', '__iter__', '__le__', '__len__', '__lt__',
+'__mul__', '__ne__',' '__new__', '__reduce__', '__reduce_ex__',
+'__repr__', '__reversed__', '__rmul__', '__setattr__',
+'__setitem__', '__setslice__', '__sizeof__', '__str__',
+'__subclasshook__', 'append', 'count', 'extend', 'index',
+'insert', 'pop', 'remove', 'reverse', 'sort']
+                            
+                            
+######## Page 152 
+                             
+                             
+>>> new_list = [0, 1, 2]
+
+
+>>> new_list2 = []
+
+>>> new_list2.append('element 0')
+>>> new_list2
+['element 0']
+
+
+>>> new_list = [0, 1, 2]
+>>> new_list.append("a string")
+>>> new_list
+[0, 1, 2, 'a string']
+
+
+######## Page 154
+                         
+>>> [x for x in range(10) if x%2 == 0]
+[0, 2, 4, 6, 8]
+
+
+>>> 0 in [0,1]
+True
+
+######## Page 155
+                 
+>>> 5 in [0,1]
+False
+
+
+>>> 0 not in [0,1]
+False
+>>> 5 not in [0,1]
+True
+                                  
+                                  
+>>> a_list = range(10)
+>>> a_list
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> reversed_list = a_list.reverse()
+>>> # reverse doesn't return a value!
+>>> print(reversed_list)
+None
+>>> a_list # the list itself has been changed
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+                       
+                       
+######## Page 157
+
+                 
+""" 1337.py
+Given a message, convert it into 1337 sp34k
+Brendan Scott
+January 2015 """
+TEST_MESSAGE = "Hello World!"
+TEST_SUBSTITUTIONS = [['e','3']]
+                            
+######## Page 158  
+
+#### Functions Section
+def encode_message(message, substitutions):
+      """Take a string message and apply each of the substitutions
+      provided. Substitutions should be a list, the elements of
+      substitutions need to be lists of length 2 of the form
+      (old_string, new_string) """
+      
+#### Testing Section
+converted_text = encode_message(TEST_MESSAGE, TEST_SUBSTITUTIONS)
+print(converted_text)
+                
+                
+######## Page 159
+           
+>>> my_message = 'Hello World!'
+>>> help(my_message.replace)
+Help on built-in function replace:
+
+replace(...)
+    S.replace(old, new[, count]) -> string
+    Return a copy of string S with all occurrences of substring
+    old replaced by new. If the optional argument count is
+    given, only the first count occurrences are replaced.
+
+
+>>> my_message = 'Hello World!'
+>>> old = 'e'
+>>> new = '3' # remember the quotes
+>>> new_string = my_message.replace(old,new)
+>>> new_string
+'H3llo World!'
+                           
+######## Page 160  
+                             
+>>> new_string = my_message.replace('e','3')
+>>> new_string
+'H3llo World!'
+                            
+######## Page 161
+                          
+""" 1337.py
+Given a message, convert it into 1337 sp34k
+Brendan Scott
+January 2015 """
+
+
+TEST_MESSAGE = "Hello World!"
+TEST_SUBSTITUTIONS = [['e','3']]
+
+#### Function Section
+def encode_message(message, substitutions):
+      """Take a string message and apply each of the substitutions
+      provided. Substitutions should be a list, the elements of
+      substitutions need to be lists of length 2 of the form
+      (old_string, new_string) """
+      for s in substitutions:
+          old = s[0]
+          new = s[1]
+          converted = message.replace(old,new)
+          
+      return converted
+      
+#### Testing Section
+converted_text = encode_message(TEST_MESSAGE, TEST_SUBSTITUTIONS)
+print(TEST_MESSAGE)
+print(converted_text)
+                         
+                           
+######## Page 162 
+                              
+
+""" 1337.py
+Given a message, convert it into 1337 sp34k
+Brendan Scott
+January 2015 """
+
+TEST_MESSAGE = "Hello World!"
+TEST_SUBSTITUTIONS = [['e','3']]
+#### Function Section
+def encode_message(message, substitutions):
+    for s in substitutions:
+        """Take a string message and apply each of the substitutions
+        provided. Substitutions should be a list, the elements of
+        substitutions need to be lists of length 2 of the form
+        (old_string, new_string) """
+        old = s[0]
+        new = s[1]
+        converted = message.replace(old,new)
+    return converted
+    
+    
+#### Testing Section
+message = raw_input("Type the message to be encoded here: ")
+converted_text = encode_message(message, TEST_SUBSTITUTIONS)
+print(message)
+print(converted_text)
+                            
+######## Page 164  
+                        
+['a','4'], ['e','3'], ['l','1'], ['o','0'], ['t','7']
+
+
+>>> substitutions = [['a','4'], ['e','3'], ['l','1'], ['o','0'], 
+                     ['t','7']]
+>>> for s in substitutions:
+          print s
+          
+['a',  '4']
+['e',  '3']
+['l',  '1']
+['o',  '0']
+['t',  '7']
+
+                           
+######## Page 166               
+                                
+""" 1337.py
+Given a message, convert it into 1337 sp34k
+Brendan Scott
+January 2015 """
+
+TEST_MESSAGE = "Hello World!"
+##TEST_SUBSTITUTIONS = [['e','3']]
+SUBSTITUTIONS = [['a', '4'], ['e', '3'], ['l', '1'], ['o', '0'], 
+                 ['t', '7']]
+                 
+#### Function Section
+def encode_message(message, substitutions):
+    """Take a string message and apply each of the substitutions
+    provided. Substitutions should be a list, the elements of
+    substitutions need to be lists of length 2 of the form
+    (old_string, new_string) """
+    for s in substitutions:
+        old = s[0]
+        new = s[1]
+        converted = message.replace(old,new)
+    return converted
+    
+#### Testing Section
+message = raw_input("Type the message to be encoded here: ")
+converted_text = encode_message(message, SUBSTITUTIONS)
+print(message)
+print(converted_text)
+                                 
+
+######## Page 168-169
+                                                
+                                                
+""" 1337.py
+Given a message, convert it into 1337 sp34k
+Brendan Scott
+January 2015 """
+
+TEST_MESSAGE = "Hello World!"
+##TEST_SUBSTITUTIONS = [['e','3']]
+SUBSTITUTIONS = [['a', '4'], ['e', '3'], ['l', '1'], ['o', '0'],
+                 ['t', '7']]
+                
+#### Function Section
+def encode_message(message, substitutions):
+    """Take a string message and apply each of the substitutions
+    provided. Substitutions should be a list, the elements of
+    substitutions need to be lists of length 2 of the form
+    (old_string, new_string) """
+    for s in substitutions:
+        old = s[0]
+        new = s[1]
+        converted = message.replace(old,new)
+        print("converted text = "+converted) # Added
+    print("Leaving encode_message") # Added
+    
+    return converted
+
+#### Testing Section
+message = raw_input("Type the message to be encoded here: ")
+converted_text = encode_message(message, SUBSTITUTIONS)
+print("started with "+message) # Changed
+print("Converted to "+converted_text) # Changed
+                            
+                            
+######## Page 170 
+                             
+""" 1337.py
+Given a message, convert it into 1337 sp34k
+Brendan Scott
+January 2015 """
+
+TEST_MESSAGE = "Hello World!"
+##TEST_SUBSTITUTIONS = [['e','3']]
+SUBSTITUTIONS = [['a','4'], ['e','3'], ['l','1'], ['o','0'],
+                 ['t','7']]
+              
+#### Function Section
+def encode_message(message, substitutions):
+    """Take a string message and apply each of the substitutions provided.
+    Substitutions should be a list, the elements of substitutions need to
+    be lists of length 2 of the form (old_string, new_string) """
+    
+    for s in substitutions:
+        old = s[0]
+        new = s[1]
+        message = message.replace(old,new) # Changed
+        print("converted text = "+message)
+    print("Leaving encode_message") # Changed
+    return message # Changed
+    
+#### Testing Section
+message = raw_input("Type the message to be encoded here: ")
+converted_text = encode_message(message, SUBSTITUTIONS)
+print("started with "+message)
+print("Converted to "+converted_text)
+
+
