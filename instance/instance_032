@@ -1,0 +1,8 @@
+"""
+按相反的顺序输出列表的值
+
+"""
+
+list = input('please input one list: ')
+
+print(list[::-1])
