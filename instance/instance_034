@@ -1,0 +1,15 @@
+"""
+练习函数调用
+
+"""
+
+def hello():
+	print('hello world!')
+
+def manyhello(n):
+	for i in range(n):
+		hello()
+
+if __name__ == '__main__':
+	n = int(input('how many times:'))
+	manyhello(n)
