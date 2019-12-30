@@ -1,0 +1,70 @@
+"""
+请输入星期几的第一个字母来判断一下是星期几，如果第一个字母一样，
+则继续判断第二个字母
+
+"""
+def option1():
+	day_dic ={'m':'Monday',
+			  'M':'Monday',
+			  'tu':'Tuesday',
+			  'TU':'Tuesday',
+			  'w':'Wednesday',
+			  'W':'Wednesday',
+			  'th':'Thursday',
+			  'TH':'Thursday',
+			  'f':'Friday',
+			  'F':'Friday',
+			  'sa':'Saturday',
+			  'SA':'Saturday',
+			  'su':'Sunday',
+			  'SU':'Sunday'}
+
+	initial_list = []
+
+	for key in day_dic:
+		initial_list.append(key)
+
+	initial_list.append('s')
+	initial_list.append('S')
+	initial_list.append('t')
+	initial_list.append('T')
+
+	print(initial_list)
+
+	initial = input('input initial letter: ')
+
+	while initial not in initial_list:
+		initial = input('out of scope, input again: ')
+
+	if initial == 't' or initial == 'T' or initial == 's' or initial == 'S':
+		initial = input('initial letter conflict, please input the first two letter:' )
+
+	print('it\'s {}'.format(day_dic[initial]))
+
+def option2():
+	tuesday_thursday = {'u':'Tuesday',
+						'h':'Thursday'}
+
+	saturday_sunday = {'a':'Saturday',
+					   'u':'Sunday'}
+
+	day_dic = {'m':'Monday',
+			   't':tuesday_thursday,
+			   'w':'Wedesday',
+			   'f':'Friday',
+			   's':saturday_sunday}
+
+	initial = str(input('please input initial letter: ')).lower()
+
+	while initial not in [k for k in day_dic]:
+		initial = str(input('out of scope, input again: ')).lower()
+
+	if initial == 't' or initial == 's':
+		second = str(input('please input the second letter: ')).lower()
+		print('it\'s {}'.format((day_dic[initial])[second]))
+	else:
+		print('it\'s {}'.format(day_dic[initial]))
+
+
+if __name__ == '__main__':
+	option2()
