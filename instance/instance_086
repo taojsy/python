@@ -1,0 +1,8 @@
+"""
+两个字符串连接程序
+"""
+
+str_1 = input('please input string 1: ')
+str_2 = input('please input string 2: ')
+
+print('joint two strings: %s'%(str_1 + str_2))
