@@ -1,0 +1,28 @@
+"""
+This file is template
+Created by jutao on 2019/12/9
+E-mail 
+
+"""
+
+import random
+
+class bingo_cage():
+	def __init__(self, items):
+		self._items = list(items)
+		random.shuffle(self._items)
+
+	def pickup(self):
+		try:
+			return self._items.pop()
+		except IndexError:
+			raise LookupError('you are about to pick up one empty list!')
+
+	def __call__(self):
+		return self.pickup()
+
+
+if __name__ == "__main__":
+	bingo = bingo_cage(range(10))
+	print(bingo.pickup())
+	print(callable(bingo))
