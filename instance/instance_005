@@ -1,0 +1,59 @@
+"""
+计算机随机产生10个数，然后按照从小到大的顺序输出
+"""
+
+import random
+
+def item_in_list(item, list):
+	for i in list:
+		if item == i:
+			return True
+			break
+	return False
+
+def option1():
+	computer_array = []
+
+	for i in range(10):
+		computer_array.append(random.randint(1,100))
+
+	print('computer create:{}'.format(computer_array))
+
+	sorted_array = []
+
+	while len(sorted_array) != 10:
+		for i in range(10):
+			smallest = computer_array[i]
+			if not item_in_list(computer_array[i], sorted_array):
+				for j in range(10):
+					if smallest >  computer_array[j] and not item_in_list(computer_array[j], sorted_array):
+						smallest = computer_array[j]
+				sorted_array.append(smallest)
+			else:
+				pass
+
+	print('original:{}'.format(computer_array))
+	print(f'sorteddd:{sorted_array}')
+
+
+def option2():
+	computer_array = []
+
+	for i in range(10):
+		computer_array.append(random.randint(1,100))
+
+	print('computer create:{}'.format(computer_array))
+
+	sorted_array = []
+
+	while computer_array:
+		smallest = min(computer_array)
+		sorted_array.append(smallest)
+		computer_array.remove(smallest)
+
+	print(f'sorteddd:{sorted_array}')
+
+
+
+if __name__ == "__main__":
+	option2()
