@@ -1,0 +1,47 @@
+"""
+一个数如果恰好等于它的因子之和，这个数就称为"完数"。例如6=1＋2＋3.编程找出1000以内的所有完数
+"""
+
+def zhengchu(n):
+	for i in range(2, n+1):
+		if n % i == 0:
+			break
+	return i
+
+def zhiyinshu(number):
+	zhiyinshu = [1]
+	while number / zhengchu(number) != 1:
+		zhiyinshu.append(str(zhengchu(number)))
+		number = int(number / zhengchu(number))
+
+	zhiyinshu.append(str(number))
+
+	return zhiyinshu
+
+def option1():
+	for i in range(2, 1001):
+		zhi_yin_shu = zhiyinshu(i)
+		sum = 0
+		for j in range(len(zhi_yin_shu)):
+			sum += int(zhi_yin_shu[j])
+
+		if sum == i:
+			print(i)
+
+def factor(num):
+	res=set()
+	for i in range(1, num):
+		if num%i==0:
+			res.add(i)
+			res.add(num/i)
+	return res
+
+
+def option2():
+	for i in range(2, 1001):
+		if i==sum(factor(i))-i:
+			print(i)
+
+
+if __name__ == '__main__':
+	option2()
