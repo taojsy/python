@@ -1,0 +1,24 @@
+"""
+将一个整数分解质因数。例如：输入90,打印出90=2*3*3*5
+"""
+
+
+number = int(input('please input number:'))
+
+zhiyinshu = []
+
+def zhengchu(n):
+	for i in range(2, n+1):
+		if n % i == 0:
+			break
+	return i
+
+while number / zhengchu(number) != 1:
+	zhiyinshu.append(str(zhengchu(number)))
+	number = int(number / zhengchu(number))
+
+zhiyinshu.append(str(number))
+
+print(zhiyinshu)
+
+
