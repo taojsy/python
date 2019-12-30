@@ -1,0 +1,21 @@
+"""
+有n个人围成一圈，顺序排号。从第一个人开始报数（从1到3报数），
+凡报到3的人退出圈子，问最后留下的是原来第几号的那位
+
+"""
+player_number = int(input('please input player number: '))
+
+player_list = list()
+player_flag = list()
+
+for i in range(player_number):
+	player_list.append(i)
+	player_flag.append(0)
+
+print(player_list)
+print(player_flag)
+
+while player_flag.count(0) >= 2:
+	index = 0
+	for i in range(1, 4):
+		index += 1
