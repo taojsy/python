@@ -1,0 +1,18 @@
+"""
+remove duplicated items in one list
+
+"""
+
+def remove_duplicate(list_original):
+	list_duplicate_removed = []
+	if list_original:
+		for item in list_original:
+			if item not in list_duplicate_removed:
+				list_duplicate_removed.append(item)
+	else:
+		return list_duplicate_removed
+
+	return list_duplicate_removed
+
+list_original = [1,1,2,2,3,3]
+print(remove_duplicate(list_original))
