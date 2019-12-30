@@ -1,0 +1,32 @@
+"""
+输入数组，最小的与第一个元素交换，最大的与最后一个元素交换，输出数组
+
+"""
+
+list = []
+
+number_add = input('input one number:')
+
+while number_add != 'q':
+	list.append(int(number_add))
+	number_add = input('input one number:')
+
+print('before:', list)
+
+min_index = list.index(min(list))
+max_index = list.index(max(list))
+
+print('index of minimal number:%d index of maximum number:%d'%(min_index, max_index))
+
+for i in range(min_index):
+	list[i], list[min_index] = list[min_index], list[i]
+	print('step 1:', list)
+
+new_min_index = list.index(min(list))
+new_max_index = list.index(max(list))
+
+print('index of minimal number:%d index of maximum number:%d'%(new_min_index, new_max_index))
+
+for i in range(len(list) - 1 , new_max_index, -1):
+	list[new_max_index], list[i] = list[i], list[new_max_index]
+	print('step 2:', list)
