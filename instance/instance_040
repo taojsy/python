@@ -1,0 +1,23 @@
+"""
+将一个数组逆序输出
+"""
+
+list = []
+copy_list = []
+
+item = input('please input one number: ')
+
+while item != 'q':
+	list.append(item)
+	copy_list.append(item)
+	item = input('please input one number: ')
+
+print('original list: %s'%list)
+
+for i in range(int(len(list) / 2)):
+	list[i], list[len(list) - 1 - i] = list[len(list) - 1 - i], list[i]
+
+print('option 1: %s'%list)
+
+copy_list.reverse()
+print('option 2: %s'%copy_list)
