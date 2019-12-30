@@ -1,0 +1,18 @@
+"""
+访问类成员
+"""
+
+class student():
+	def __init__(self, name = 'Tom', score = 100 ):
+		self.name = name
+		self.score = score
+
+a = student()
+print(a.name, a.score)
+
+a.name = 'Jack'
+a.score = 99
+print(a.name, a.score)
+
+b = student('Mike', 96)
+print(b.name, b.score)
