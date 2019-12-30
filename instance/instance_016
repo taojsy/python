@@ -1,0 +1,13 @@
+"""
+输出指定格式的日期
+
+"""
+
+import datetime
+
+print(datetime.date.today())
+print(datetime.date(2019,12,15))
+print(datetime.date.today().strftime('%m%d%y'))
+day = datetime.date(2019,12,15)
+day = day.replace(year = day.year+10)
+print(day)
