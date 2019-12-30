@@ -1,0 +1,21 @@
+"""
+判断101-200之间有多少个素数，并输出所有素数
+判断素数的方法：用一个数分别去除2到sqrt(这个数)，如果能被整除，则表明此数不是素数，反之是素数
+
+"""
+
+import math
+
+count = 0
+for i in range(101, 201):
+	is_sushu = True
+	for j in range(2, round(math.sqrt(i))+1):
+		if i % j == 0:
+			is_sushu = False
+			break
+	if is_sushu:
+		count += 1
+		print(i)
+
+print('total %d sushu'%count)
+
