@@ -1,0 +1,15 @@
+"""
+Time
+
+"""
+
+import time
+
+start = time.process_time()
+
+for i in range(100):
+	print(i)
+
+end = time.process_time()
+
+print('difference is %6.3f'%(end - start))
