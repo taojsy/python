@@ -1,0 +1,24 @@
+"""
+输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数
+
+"""
+
+your_string = input('please input one string:')
+
+space = 0
+digit = 0
+alpha = 0
+others = 0
+
+for item in range(len(your_string)):
+	if your_string[item].isspace():
+		space += 1
+	elif your_string[item].isdigit():
+		digit += 1
+	elif your_string[item].isalpha():
+		alpha += 1
+	else:
+		others += 1
+
+print('number of space:{}\nnumber of digit:{}\n''number of alpha:{}\n'
+	  'number of others:{}'.format(space, digit, alpha, others))
