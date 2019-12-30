@@ -1,0 +1,14 @@
+"""
+输入一个奇数，然后判断最少几个 9 除于该数的结果为整数
+程序分析 999999 / 13 = 76923
+"""
+
+odd = int(input('please input one odd: '))
+
+digits = 1
+n = 9
+
+while n % odd != 0:
+	digits += 1
+	n += (10**(digits - 1))*9
+	print(n)
