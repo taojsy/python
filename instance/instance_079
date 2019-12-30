@@ -1,0 +1,10 @@
+"""
+字符串排序
+
+"""
+
+list = ['dabc', 'abcd', 'cdab', 'bcda']
+
+list.sort()
+
+print(list)
