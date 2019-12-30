@@ -1,0 +1,19 @@
+"""
+两个变量值用函数互换
+
+"""
+
+def exchange(a, b):
+	a, b = b, a
+	print('inside function, a=%d, b=%d'%(a, b))
+	return a, b
+
+
+a = int(input('input a: '))
+b = int(input('input b: '))
+print('before exchange: a=%d, b=%d'%(a, b))
+
+# if replace with ' exchange(a, b)', a and b aren't exchanged, why?
+a, b = exchange(a, b)
+
+print('after exchange: a=%d, b=%d'%(a, b))
