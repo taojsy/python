@@ -1,0 +1,35 @@
+"""
+Time
+
+"""
+
+import time
+import random
+
+play_it = input('do you want to play it? (\'y\' or \'n\'): ')
+
+while play_it == 'y':
+	secret = random.randint(0, 2**32) % 100
+	guess = int(input('please guess: '))
+
+	start = time.time()
+
+	while guess != secret:
+		if guess < secret:
+			print('you guess less')
+		else:
+			print('you guess more')
+		guess = int(input('please guess: '))
+
+	end = time.time()
+
+	print('%f spent!'%(end - start))
+
+	if end - start > 30:
+		print('add oil')
+	elif end - start > 15:
+		print('not bad')
+	else:
+		print('you\'re smart')
+
+	play_it = input('do you want to play it? (\'y\' or \'n\'): ')
