@@ -1,0 +1,17 @@
+"""
+作用域、类的方法和变量
+
+"""
+
+class dumy:
+	num = 1
+	def Num(self):
+		print('class dumy num:', self.num)
+		print('global num:', num)
+		self.num += 1
+
+n = dumy()
+num = 1
+for i in range(5):
+	num *= 10
+	n.Num()
