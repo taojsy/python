@@ -1,0 +1,11 @@
+"""
+暂停一秒输出，并格式化当前时间
+
+"""
+
+import time
+
+while True:
+	format = '%Y-%m-%d %H:%M:%S'
+	print('\r'+time.strftime(format, time.localtime(time.time())), end=' ')
+	time.sleep(1)
