@@ -1,0 +1,10 @@
+"""
+暂停一秒输出
+
+"""
+
+import time
+
+while True:
+	print('\r%s' % (str(time.time()).split('.')[0]), end=' ')
+	time.sleep(1)
