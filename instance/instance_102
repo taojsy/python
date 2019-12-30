@@ -1,0 +1,16 @@
+"""
+This is very simple cipher translation
+
+"""
+
+sentence = input('please input your words: ')
+
+words = sentence.split(' ')
+
+for item in words:
+	if len(item) >= 3:
+		item = item + '%sy' % (item[0])
+		item = item[1:]
+		print(item)
+	else:
+		pass
