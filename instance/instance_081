@@ -1,0 +1,20 @@
+"""
+809*??=800*??+9*?? 其中??代表的两位数, 809*??为四位数，
+8*??的结果为两位数，9*??的结果为3位数。求??代表的两位数，
+及809*??后的结果
+
+"""
+
+for secret in range(10, 100):
+	condition1 = 999 < secret * 809 < 10000
+	condition2 = 9 < secret * 8 < 100
+	condition3 = 99 < secret * 9 < 1000
+	condition4 = 809 * secret == 800 * secret + 9 * secret
+
+	if condition1 and condition2 and condition3 and condition4:
+		break
+
+print('??=%d'%secret)
+print('809*??=%d'%(809*secret))
+print('8*??=%d'%(8*secret))
+print('9*??=%d'%(9*secret))
