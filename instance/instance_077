@@ -1,0 +1,14 @@
+"""
+This file is template
+Created by jutao on 2019/12/26
+E-mail 
+
+"""
+
+list = ['zhao', 'qian', 'sun', 'li']
+
+for i in list:
+	print(i)
+
+for i in range(len(list)):
+	print(list[i])
