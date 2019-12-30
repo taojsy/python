@@ -1,0 +1,10 @@
+"""
+字符串日期转换为易读的日期格式
+
+"""
+
+from dateutil import parser
+
+dt = parser.parse('Dec 28 2019 16:44PM')
+
+print(dt)
