@@ -1,0 +1,9 @@
+"""
+连接字符串
+"""
+
+delimiter = input('please input delimiter: ')
+
+list = ['China', 'US', 'UK', 'Brazil']
+
+print(delimiter.join(list))
