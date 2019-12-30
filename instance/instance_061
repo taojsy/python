@@ -1,0 +1,14 @@
+"""
+打印出杨辉三角形前十行
+
+"""
+def yanghui(rows):
+	r = [[1]]
+	for i in range(1, rows):
+		r.append(list(map(lambda x,y:x+y, [0] + r[-1], r[-1] + [0])))
+	return r[:rows]
+
+a = yanghui(10)
+
+for i in a:
+	print(i)
