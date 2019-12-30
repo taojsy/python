@@ -1,0 +1,21 @@
+"""
+某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，加密规则如下：
+每位数字都加上5,然后用和除以10的余数代替该数字，再将第一位和第四位交换，第二位和第三位交换
+
+"""
+
+plain_text = []
+for i in range(4):
+	plain_text.append(int(input('please input one number:')))
+
+print(plain_text)
+
+for i in range(4):
+	plain_text[i] = (plain_text[i] + 5) % 10
+
+print(plain_text)
+
+plain_text[0], plain_text[3] = plain_text[3], plain_text[0]
+plain_text[1], plain_text[2] = plain_text[2], plain_text[1]
+
+print(plain_text)
