@@ -1,0 +1,16 @@
+import time
+
+length = 50
+count = 0
+
+while True:
+    gap = length - count
+    print('\r%s>%s' % ('|' * count, '|' * gap), end = '')
+    try:
+        time.sleep(0.3)
+    except KeyboardInterrupt:
+        print('\nBye-bye')
+        break
+    if count == length:
+        count = 0
+    count += 1
