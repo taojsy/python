@@ -1,0 +1,29 @@
+"""
+学习使用auto定义变量的用法
+
+"""
+
+i = 0
+n = 0
+
+def dumy():
+	i = 0
+	print(i)
+	i += 1
+
+def dumy2():
+	global n
+	print(n)
+	n += 1
+
+print('variable with same name inside function')
+for j in range(20):
+	print(i)
+	dumy()
+	i += 1
+
+print('global state variable with same name ')
+for k in range(20):
+	print(n)
+	dumy2()
+	n += 10
