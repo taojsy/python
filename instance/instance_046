@@ -1,0 +1,15 @@
+"""
+求输入数字的平方，如果平方运算后小于 50 则退出
+
+"""
+
+while True:
+	try:
+		n = int(input('please input n: '))
+	except:
+		print('input error, please input one integrate')
+		continue
+	n *= n
+	print('n**2=%d'%n)
+	if n < 50:
+		break
