@@ -1,0 +1,14 @@
+"""
+数字比大小
+
+"""
+
+a = int(input('input a: '))
+b = int(input('input b: '))
+
+if a == b:
+	print('a equals to b')
+elif a < b:
+	print('a less than b')
+else:
+	print('a biger than b')
