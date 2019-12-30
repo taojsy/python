@@ -1,0 +1,22 @@
+"""
+求s=a+aa+aaa+aaaa+aa…a的值，其中a是一个数字。
+例如2+22+222+2222+22222(此时共有5个数相加)，几个数相加由键盘控制
+
+"""
+
+# note, return value of 'input' is str, although you input one digit (2,3...)
+bit = input('input one number:')
+times = int(input('how many times to add:'))
+
+sum = 0
+
+for i in range(1, times + 1):
+	# if bit = '1', bit*i will be '111'
+	temp = int(bit*i)
+	if i == times:
+		print('%d ='%temp, end = ' ')
+	else:
+		print('%d +'%temp, end = ' ')
+	sum += temp
+
+print(sum)
