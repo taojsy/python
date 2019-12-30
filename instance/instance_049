@@ -1,0 +1,13 @@
+"""
+lambda
+
+"""
+
+max = lambda x, y:x*(x>=y)+y*(y>x)
+min = lambda x, y:x*(x<=y)+y*(y<x)
+
+a = int(input('input a: '))
+b = int(input('input b: '))
+
+print(max(a, b))
+print(min(a, b))
