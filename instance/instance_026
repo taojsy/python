@@ -1,0 +1,16 @@
+"""
+利用递归方法求5!
+
+"""
+
+def fun(n):
+	if n == 1:
+		res = 1
+	else:
+		res = n * fun(n-1)
+
+	return res
+
+n = int(input('please input n: '))
+
+print('%d!=%d'%(n, fun(n)))
