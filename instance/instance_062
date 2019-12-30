@@ -1,0 +1,10 @@
+"""
+查找字符串
+
+"""
+
+string = 'thisisthefirstpythoncodeforhelloworld'
+
+string_to_check = input('input string to check: ')
+
+print(string.find(string_to_check))
