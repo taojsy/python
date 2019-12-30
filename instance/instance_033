@@ -1,0 +1,8 @@
+"""
+按逗号分隔列表
+
+"""
+
+list = input('please input one list: ')
+
+print(','.join(i for i in list))
