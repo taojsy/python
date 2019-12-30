@@ -1,0 +1,19 @@
+"""
+计算字符串长度
+"""
+
+def str_length_1(string):
+	return(len(string))
+
+def str_length_2(string):
+	i = 0
+	for char in string:
+		i += 1
+	return i
+
+if __name__ == '__main__':
+	string = input('input one string: ')
+	length1 = str_length_1(string)
+	print('fun1:%d'%length1)
+	length2 = str_length_2(string)
+	print('fun2:%d'%length2)
