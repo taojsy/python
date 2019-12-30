@@ -1,0 +1,10 @@
+"""
+计算字符串中子串出现的次数
+
+"""
+
+s1 = 'helloworldhelloworldhelloworldhelloworldhelloworldxxx'
+
+s2 = 'helloworld'
+
+print(s1.count(s2))
