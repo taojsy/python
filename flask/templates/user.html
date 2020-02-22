@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{ name|lower}}
+    {{ dic['key2']}}
+    {{ '<H1>Hello world</H1>'|safe}}
+    {% if name == 'zhangsan' %}
+    hello, zhangsan
+    {% else %}
+    you're not zhangsan
+    {% endif %}
+
+    {% for (temp,value) in dic.items() %}
+    <p> {{ temp }}:{{ value }} </p>
+    {% endfor %}
+</body>
+</html>
