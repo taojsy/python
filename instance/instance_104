@@ -1,0 +1,12 @@
+def log(func):
+    def wrapper():
+        print('log start...')
+        func()
+        print('log end...')
+    return wrapper
+
+@log
+def test():
+    print('test...')
+    
+test()
