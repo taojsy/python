@@ -17,3 +17,7 @@ def test2():
 
 print(test1.__name__)
 print(test2.__name__)
+
+output:
+test1
+test2
