@@ -10,3 +10,7 @@ def test():
     print('test...')
     
 test()
+output
+log开始 ...
+test ..
+log结束 ...
