@@ -28,3 +28,11 @@ def test2(s1, s2):
 
 test1('a')
 test2('a','bc')
+
+output:
+log开始 ... test1 module1
+test1 .. a
+log结束 ...
+log开始 ... test2 module1
+test2 .. a bc
+log结束 ...
