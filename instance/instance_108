@@ -1,0 +1,19 @@
+class User():
+    def __init__(self):
+        print('实例化')
+
+    def __enter__(self):
+        print('进入')
+
+    def __exit__(self, exc_type, exc_val, exc_trace):
+        print('退出')
+
+obj = User()
+with obj:
+    print('主要内容')
+    
+output:
+实例化
+进入
+主要内容
+退出
