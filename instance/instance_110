@@ -1,0 +1,48 @@
+import numpy as np
+from matplotlib import dates as mdates
+import numpy as np
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
+
+data = '''time price
+9:30:00 10.8
+9:31:00 11.18
+9:32:00 11.25
+9:33:00 11.28
+9:34:00 11.10
+9:35:00 10.99
+9:36:00 10.95
+9:37:00 11.01
+9:38:00 10.98
+9:39:00 11.12
+9:40:00 11.18
+9:41:00 11.20
+9:42:00 11.38
+'''
+
+open('sh600004.csv','w').write(data)
+
+
+ddate, dopen =  np.loadtxt('sh600004.csv', delimiter=' ', skiprows=1,
+                          converters={0:mdates.bytespdate2num('%H:%M:%S')},
+                          unpack=True)
+
+
+def PlotDemo2():
+ fig  = plt.figure()
+ fig.suptitle('sh600004', fontsize=14, fontweight='bold')
+ ax = fig.add_subplot(1,1,1)
+ ax.plot(ddate,dopen)
+ ax.set_title('time line')
+ ax.set_xlabel('time')
+ ax.set_ylabel('price')
+ ax.xaxis.set_major_locator(mdates.DayLocator(bymonthday=range(1,32), interval=1))
+ ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M:%S"))
+ for label in ax.xaxis.get_ticklabels():
+       label.set_rotation(45)
+ plt.show()
+
+
+if __name__ == '__main__':
+    PlotDemo2()
+
