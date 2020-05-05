@@ -1,0 +1,43 @@
+import random
+from itertools import count
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+import tushare as ts
+import time
+import pandas as pd
+from pprint import pprint
+from datetime import datetime
+import numpy as np
+
+
+plt.style.use('fivethirtyeight')
+x_values = []
+y_values = []
+index = count()
+
+
+def animate(i):
+    df = ts.get_realtime_quotes('000518')
+    # convert DataFrame to array
+    realtime_data_tmp = np.array(df)
+    # covert array to list
+    realtime_data = realtime_data_tmp.tolist()
+    stock_name = realtime_data[0][0]
+    price = realtime_data[0][3]
+    now = datetime.now().strftime("%H:%M:%S")
+    x_values.append(now)
+    y_values.append(price)
+    plt.cla()
+    plt.plot(x_values, y_values)
+    plt.xlabel('time')
+    plt.ylabel('price')
+    plt.title(stock_name)
+    plt.gcf().autofmt_xdate()
+
+
+ani = FuncAnimation(plt.gcf(), animate, 60000)
+
+plt.tight_layout()
+
+plt.show()
+
