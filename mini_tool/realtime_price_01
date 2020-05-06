@@ -11,8 +11,8 @@ title = Label(root, text='stock code')
 title.pack()
 stock_no = Entry(root)
 stock_no.pack()
-content = Label(root, text='')
-content.pack()
+#content = Label(root, text='')
+#content.pack()
 
 
 class StockMonitor(Frame):
@@ -54,10 +54,10 @@ class StockMonitor(Frame):
         return output
 
     def _update(self):
-        self._set_count()
+        self._set_content()
         self.timer = self.after(self.msec, self._update)
 
-    def _set_count(self):
+    def _set_content(self):
         stock_info = self.get_stock_info(stock_no.get())
         current_today = str(time.strftime('%Y-%m-%d', time.localtime(time.time())))
         current_time = str(time.strftime('%H:%M:%S', time.localtime(time.time())))
