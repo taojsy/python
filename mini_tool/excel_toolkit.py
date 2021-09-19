@@ -362,7 +362,54 @@ def  cell_value_also_in_another_excel(source, destination, output):
 	wb_source.save(output)
 
 
+# check same case in two columns and mark both red color
+def  same_case(file):
+	wb = xl.load_workbook(file)
+	ws = wb['Sheet1']
 
+	redFill = PatternFill(start_color='FFFF0000', end_color='FFFF0000', fill_type='solid')
+
+	for i in range(1, ws.max_row+1):
+		cell_to_check = re.sub('\[.*\]', '', str(ws.cell(row=i, column=1).value))
+
+		for j in range(1, ws.max_row+1):
+			cell_to_compare = re.sub('\[.*\]', '', str(ws.cell(row=j, column=2).value))
+			if (cell_to_check.upper()).lstrip() == (cell_to_compare.upper()).lstrip():
+				print(cell_to_check)
+				check_row_to_lable = 'A' + str(i)
+				compare_row_to_lable = 'B' + str(j)
+				ws[check_row_to_lable].fill = redFill
+				ws[compare_row_to_lable].fill = redFill
+				break
+
+	wb.save(file)
+
+
+def  simplify_cell_content(file):
+	"""
+	original cell content: 2021-07-01T21:12:19.643000
+	simplified cell content: 2021-07-01
+	create new column to save simplified cell content
+	"""
+	wb = xl.load_workbook(file)
+	ws = wb['Sheet1']
+
+	# from which letter to cut following part, in this case, delimeter is 'T'
+	delimeter = input('from where to cut:')
+
+	for i in range(1, ws.max_row+1):
+		original_cell_content = str(ws.cell(row=i, column=1).value)
+		from_where_to_cut = original_cell_content.index(delimeter)
+		simplified_cell_content = original_cell_content[:from_where_to_cut]
+		print('{0} -> {1}'.format(original_cell_content, simplified_cell_content))
+		ws.cell(row=i, column=2).value = simplified_cell_content
+
+	wb.save(file)
+
+
+if	__name__ == '__main__':
+	file = 'D:\\20210919.xlsx'
+	simplify_cell_content(file)
 
 
 
