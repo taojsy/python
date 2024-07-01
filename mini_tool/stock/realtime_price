@@ -1,0 +1,55 @@
+import tushare as ts
+import time
+import os
+import pandas as pd
+
+# initialize the tushare API with your token
+ts.set_token('def3da73837f0bcc9dc92371d977be1623fdbbb04cdd5392efd99831')
+pro = ts.pro_api()
+
+pd.set_option('display.width', 300)
+
+stock = [
+        {'name':'ETF', 'code':'510300'},
+        {'name':'PAYH', 'code':'000001'}, 
+        {'name':'NJGF', 'code':'002812'}, 
+        {'name':'AEYK', 'code':'300015'}, 
+        {'name':'HRYY', 'code':'600276'}, 
+        {'name':'HLSW', 'code':'002007'}, 
+        {'name':'ALD', 'code':'688179'}, 
+        {'name':'TTKJ', 'code':'688133'}, 
+        {'name':'SDYB', 'code':'600529'}, 
+        {'name':'HKWS', 'code':'002415'}, 
+        {'name':'JLY', 'code':'300999'}, 
+        {'name':'HTWY', 'code':'603288'}, 
+        {'name':'QFKJ', 'code':'002373'}, 
+        {'name':'ZXGJ', 'code':'688981'}, 
+        {'name':'ZJSR', 'code':'002511'}
+        ]
+
+while True:
+    os.system('cls' if os.name == 'nt' else 'clear')
+    #get real-time stock prices for a specific stock (e.g., stock code '600000.SH')
+    #df = pro.query('stock_basic', exchange='', list_status='L', fields='ts_code, symbol, name, area, industry, list_date')
+    #df = pro.daily(ts_code = '600519')
+    #df = ts.realtime_tick(ts_code = '000001.sz')
+    result_list = list()
+    #result_list.append(('code', 'price', 'rate', 'time'))
+    for item in stock:
+        name = item['name']
+        code = item['code']
+        df = ts.get_realtime_quotes(code)
+        price = df['price'].iloc[-1]
+        pre_close = df['pre_close'].iloc[-1]
+        now = df['time'].iloc[-1]
+        rate = str((float(price) - float(pre_close)) * 100 / float(pre_close))[:4] + '%'
+        result_tuple = (name, price, rate, now)
+        result_list.append(result_tuple)
+        #print(f"{('code'):<10}{('price'):<10}{('rate'):<10}{('time'):<10}")
+        #print(f"{result[0]:<10}{result[1]:<10}{result[2]:<10}{result[3]:<10}")
+
+    result_df = pd.DataFrame(result_list, columns = ['name', 'price', 'rate', 'time'])
+    # line number isn't printed
+    print(result_df.to_string(index=False))
+    
+    time.sleep(3)
